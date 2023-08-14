@@ -2,9 +2,31 @@ import "@/styles/globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fira_Code, Montserrat, Roboto } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import PageHeader from "@/components/nav/header";
+import ThemeProvider from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-code",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+  weight: "400",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+  weight: ["400", "700", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +41,19 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body
+          className={cn(
+            firaCode.variable,
+            roboto.variable,
+            montserrat.variable,
+            "relative min-h-full max-w-[100vw]",
+          )}
+        >
+          <ThemeProvider>
+            <PageHeader />
+            {children}
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
   );

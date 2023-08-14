@@ -1,13 +1,15 @@
-import { UserButton } from "@clerk/nextjs";
-
-import { Button } from "@/components/ui/button";
-
 export default function Home() {
   return (
     <main>
-      <UserButton afterSignOutUrl="/" />
-      <Button>hello</Button>
-      <div className="mx-0 bg-red-200 p-0">hi</div>
+      <div className="container mx-auto max-w-5xl">
+        <div className="mx-auto max-w-3xl">
+          <div className="h-screen">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis
+            velit laboriosam ad corporis ducimus eveniet totam! Neque dolorem
+            adipisci sequi.
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
