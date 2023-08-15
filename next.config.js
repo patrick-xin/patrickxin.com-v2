@@ -8,6 +8,9 @@ const { withContentlayer } = require("next-contentlayer");
 const withPlugins = require("next-compose-plugins");
 
 module.exports = withPlugins([withContentlayer, withBundleAnalyzer], {
+  experimental: {
+    serverActions: true,
+  },
   eslint: {
     dirs: ["."],
   },

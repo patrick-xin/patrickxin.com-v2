@@ -1,5 +1,12 @@
+export { default as ArrowIcon } from "./arrow";
+export { default as ArrowLeftIcon } from "./arrow-left";
+export { default as ArrowRightIcon } from "./arrow-right";
+export { default as CheckSquareIcon } from "./check-squre";
+export { default as CopyRightIcon } from "./copyright";
 export { default as HashIcon } from "./hash";
 export { default as MoonIcon } from "./moon-icon";
 export { default as QuoteEndIcon } from "./quote-end";
 export { default as QuoteStartIcon } from "./quote-start";
+export { default as SpinLoader } from "./spin-loader";
 export { default as SunIcon } from "./sun-icon";
+export { default as TwitterIcon } from "./twitter";

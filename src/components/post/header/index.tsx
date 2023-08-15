@@ -5,12 +5,13 @@ import Avatar from "./avatar";
 import Description from "./description";
 import PublishTime from "./publish-time";
 import ReadingTime from "./reading-time";
-import PostThumbnail from "./thumbnail";
 import PostTitle from "./title";
+import PostStats from "./status";
+import PostThumbnail from "./thumbnail";
 
 type PostHeaderProps = Pick<
   Post,
-  "description" | "publishedAt" | "title" | "readingTime" | "thumbnail"
+  "description" | "publishedAt" | "title" | "readingTime" | "thumbnail" | "slug"
 >;
 
 const PostHeader = ({
@@ -19,6 +20,7 @@ const PostHeader = ({
   readingTime,
   title,
   thumbnail,
+  slug,
 }: PostHeaderProps) => {
   return (
     <header className="lg:py-12">
@@ -36,16 +38,18 @@ const PostHeader = ({
               </div>
             </div>
           </div>
+
+          <PostStats slug={slug} />
         </div>
       </div>
+
       <Description description={description} />
 
       <PostThumbnail
         title={title}
-        imageUrl={thumbnail.url}
+        src={thumbnail.url}
         author={thumbnail.author}
         fromUrl={thumbnail.from}
-        src="https://images.unsplash.com/photo-1691466517945-0f9cc5b47539?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
       />
     </header>
   );

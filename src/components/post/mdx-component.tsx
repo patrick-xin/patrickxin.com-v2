@@ -5,8 +5,19 @@ import Link from "next/link";
 import { HashIcon, QuoteEndIcon, QuoteStartIcon } from "../icon";
 
 const MDXComponents = {
-  Image,
-
+  MDXImage: ({ ...props }) => {
+    return (
+      <Image
+        {...props}
+        src={props.src}
+        alt={props.alt}
+        className="aspect-[4/3] rounded-md object-fill"
+        width={800}
+        height={600}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
+      />
+    );
+  },
   a: ({ ...props }) => {
     if (props.href.startsWith("https")) {
       return (

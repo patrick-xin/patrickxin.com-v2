@@ -2,11 +2,13 @@ import "@/styles/globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
-import { Fira_Code, Montserrat, Roboto } from "next/font/google";
+import { Fira_Code, Space_Mono, DM_Serif_Display } from "next/font/google";
 
-import PageHeader from "@/components/nav/header";
+import Header from "@/components/nav/header";
 import ThemeProvider from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/footer";
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
@@ -14,18 +16,18 @@ const firaCode = Fira_Code({
   variable: "--font-code",
 });
 
-const montserrat = Montserrat({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-body",
-  weight: "400",
+  weight: ["400", "700"],
 });
 
-const roboto = Roboto({
+const dmSerifDisplay = DM_Serif_Display({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-heading",
-  weight: ["400", "700", "900"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -44,14 +46,21 @@ export default function RootLayout({
         <body
           className={cn(
             firaCode.variable,
-            roboto.variable,
-            montserrat.variable,
+            dmSerifDisplay.variable,
+            spaceMono.variable,
             "relative min-h-full max-w-[100vw]",
           )}
         >
           <ThemeProvider>
-            <PageHeader />
-            {children}
+            <main className="flex min-h-screen flex-col">
+              <Header />
+              <div className="mx-6 mb-12 mt-8 grow md:mx-12 lg:mx-0 lg:my-12">
+                {children}
+              </div>
+              <Footer hasMarginBottom={false} />
+            </main>
+
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

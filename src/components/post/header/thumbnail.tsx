@@ -6,7 +6,6 @@ type PostThumbnailProps = {
   title: string;
   author: string;
   fromUrl: string;
-  imageUrl: string;
   src: string;
 };
 
@@ -24,7 +23,7 @@ const PostThumbnail = async ({
         blurDataURL={url}
         src={src}
         placeholder="blur"
-        className="aspect-video rounded-md object-cover"
+        className="aspect-[4/3] rounded-md object-cover shadow-md"
         width={width}
         height={height}
         alt={`${title}-image`}

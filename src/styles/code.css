@@ -192,5 +192,5 @@ pre[class*='language-'] {
   content: attr(line);
 }
 .rehype-code-title {
-  @apply dark:bg-zinc-900 bg-[#F9FAFB] p-2 rounded-sm rounded-b-none w-fit text-sm -mb-2.5;
+  @apply dark:bg-[#24283b] bg-[#F9FAFB] text-[#e59500] p-2 rounded-sm rounded-b-none w-fit text-sm -mb-2.5;
 }

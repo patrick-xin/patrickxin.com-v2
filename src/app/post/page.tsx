@@ -1,7 +1,8 @@
 import { compareDesc } from "date-fns";
-import Link from "next/link";
 import React from "react";
 import { allPosts } from "contentlayer/generated";
+import PageHeader from "@/components/page-header";
+import PostList from "@/components/posts/list";
 
 const AllBlogsPage = () => {
   const posts = allPosts.sort((a, b) =>
@@ -9,12 +10,9 @@ const AllBlogsPage = () => {
   );
 
   return (
-    <div className="container mx-auto max-w-5xl">
-      {posts.map((post, idx) => (
-        <div key={idx}>
-          <Link href={`/post/${post.slug}`}>{post.title}</Link>
-        </div>
-      ))}
+    <div className="container mx-auto max-w-3xl">
+      <PageHeader titleInfo="I write things about" titleInfoMain="React" />
+      <PostList posts={posts} />
     </div>
   );
 };

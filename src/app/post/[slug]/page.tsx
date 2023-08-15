@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import { useMDXComponent } from "next-contentlayer/hooks";
 import { allPosts } from "contentlayer/generated";
 
 import PostHeader from "@/components/post/header";
-import MDXComponents from "@/components/post/mdx-component";
+import PostContent from "@/components/post/body";
+import PostFooter from "@/components/post/footer";
+import ScrollToTop from "@/components/scroll-to-top";
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
@@ -18,13 +19,13 @@ const BlogPage = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((p) => p._raw.flattenedPath === params.slug);
 
   if (!post) notFound();
-  const MDXContent = useMDXComponent(post.body.code);
+
   return (
-    <section className="mx-auto max-w-2xl py-8">
+    <section className="mx-auto max-w-3xl">
       <PostHeader {...post} />
-      <article>
-        <MDXContent components={MDXComponents} />
-      </article>
+      <PostContent code={post.body.code} />
+      <PostFooter slug={params.slug} />
+      <ScrollToTop isFixed top={1000} />
     </section>
   );
 };

@@ -6,15 +6,15 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 225, 15%, 95%;
+    --foreground: 215, 14%, 34%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --primary: 39, 100%, 45%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
+    --secondary: 165, 57%, 56%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
@@ -26,18 +26,20 @@
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
     --radius: 0.5rem;
+    --main: 39, 100%, 45%;
+    --main-reverse: 165, 57%, 56%;
   }
  
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 240, 19%, 13%;
+    --foreground: 225, 15%, 95%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
+    --secondary: 39, 100%, 45%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
@@ -48,6 +50,8 @@
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
+    --main: 165, 57%, 56%;
+    --main-reverse: 39, 100%, 45%;
   }
 
 
@@ -57,16 +61,51 @@
   * {
     @apply border-border;
   }
+  html{
+    @apply scroll-smooth;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
   p {
     @apply font-body font-normal text-lg;
   }
+  code, pre{
+    @apply font-code text-[#ff6188] bg-gray-50 dark:bg-[#24283b] rounded-md dark:text-[#c0caf5];
+  }
   pre {
-    @apply my-4 tracking-wider font-code overflow-auto rounded shadow-sm pb-2 md:pb-6 bg-gray-50 dark:bg-zinc-900;
+    @apply my-4 tracking-wider overflow-auto rounded shadow-sm pb-2 md:pb-6;
   }
   code {
-    @apply text-sm bg-gray-50 dark:bg-zinc-900 px-0.5 font-code tracking-wider;
+    @apply text-sm px-0.5 tracking-wider;
+  }
+}
+
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent dark:bg-gradient-to-tr bg-gradient-to-tl from-[#e59500]  to-pink-500 dark:from-[#4dcead] dark:to-blue-500;
+  }
+  .text-gradient-reversed {
+    @apply bg-clip-text text-transparent dark:bg-gradient-to-tl bg-gradient-to-tr from-[#e59500]  to-pink-500 dark:from-[#4dcead] dark:to-blue-500;
+  }
+}  
+
+
+@layer utilities {
+  .grid-with-nav {
+    gird-template-columns: 5rem auto;
+  }
+  .form-input {
+    @apply bg-transparent placeholder-shown:text-sm appearance-none 
+          rounded-md relative block w-full px-3 py-2 h-10 border border-gray-300 text-base
+          dark:border-white/50 placeholder-gray-500 text-gray-900 dark:text-white/90 
+          focus:outline-none focus:border-yellow-500 dark:focus:border-[#4dcead] focus:border;
+  }
+  .icon-link {
+    @apply w-5 h-5 lg:h-6 lg:w-6 fill-current text-gray-400 dark:group-hover:text-[#4dcead] group-hover:text-[#e59500] transition-colors ease-out;
+  }
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(107, 114, 128, 0.25);
   }
 }
