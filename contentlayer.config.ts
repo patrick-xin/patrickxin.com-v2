@@ -27,6 +27,8 @@ const Post = defineDocumentType(() => ({
     isPublished: { type: "boolean", required: true },
     toc: { type: "boolean", required: true },
     thumbnail: { type: "json", required: false },
+    category: { type: "enum", required: true, options: ["web", "ai"] },
+    tags: { type: "list", of: { type: "string" }, required: true },
   },
   computedFields,
 }));

@@ -5,7 +5,7 @@
 @import './code.css';
 
 @layer base {
-  :root {
+  /* :root {
     --background: 225, 15%, 95%;
     --foreground: 215, 14%, 34%;
     --card: 0 0% 100%;
@@ -37,14 +37,14 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 39, 100%, 45%;
-    --secondary-foreground: 0 0% 98%;
+    --primary: 165, 57%, 56%;
+    --primary-foreground: 225, 15%, 95%;
+    --secondary: 193, 57%, 54%;
+    --secondary-foreground: 39, 100%, 45%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 193, 57%, 54%;
+    --accent-foreground: 193, 57%, 54%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 14.9%;
@@ -52,9 +52,60 @@
     --ring: 0 0% 83.1%;
     --main: 165, 57%, 56%;
     --main-reverse: 39, 100%, 45%;
+  } */
+
+:root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 143, 85%, 53%;
+    --success-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+    --site: 39, 100%, 45%;
+    --site-foreground: 165, 57%, 56%;
   }
-
-
+ 
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 117, 64%, 45%;
+    --success-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --site: 165, 57%, 56%;
+    --site-foreground: 39, 100%, 45%;
+  }
 }
 
 @layer base {
@@ -65,19 +116,19 @@
     @apply scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply  text-gray-600 dark:bg-[#1A1A26] dark:text-[#f0f1f4]/90 antialiased;
   }
   p {
     @apply font-body font-normal text-lg;
   }
   code, pre{
-    @apply font-code text-[#ff6188] bg-gray-50 dark:bg-[#24283b] rounded-md dark:text-[#c0caf5];
+    @apply font-code text-[#ff6188] bg-gray-50 dark:bg-[#24283b]  dark:text-[#c0caf5];
   }
   pre {
-    @apply my-4 tracking-wider overflow-auto rounded shadow-sm pb-2 md:pb-6;
+    @apply my-4 text-sm tracking-wider overflow-auto rounded-xl rounded-t-none shadow-sm pb-2 md:pb-6;
   }
   code {
-    @apply text-sm px-0.5 tracking-wider;
+    @apply text-sm px-0.5 tracking-wider rounded-md;
   }
 }
 

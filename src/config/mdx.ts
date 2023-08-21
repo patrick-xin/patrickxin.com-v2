@@ -11,7 +11,12 @@ const mdxOptions = {
   rehypePlugins: [
     rehypeSlug,
     rehypeCodeTitles,
-    rehypePrism,
+    [
+      rehypePrism,
+      {
+        showLineNumbers: true,
+      },
+    ],
     [
       rehypeAutolinkHeadings,
       {

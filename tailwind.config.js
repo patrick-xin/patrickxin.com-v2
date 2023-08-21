@@ -34,6 +34,10 @@ module.exports = {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -50,6 +54,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        site:{
+          DEFAULT: "hsl(var(--site))",
+          foreground: "hsl(var(--site-foreground))",
+        }
       },
       fontFamily: {
         code: ["var(--font-code)"],
@@ -74,6 +82,14 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      zIndex: {
+        '-10': '-10',
+        25: 25,
+        50: 50,
+        75: 75,
+        100: 100,
+        200: 200,
       },
     },
   },

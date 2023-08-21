@@ -1,8 +1,9 @@
 import { compareDesc } from "date-fns";
 import React from "react";
 import { allPosts } from "contentlayer/generated";
+import PostList from "@/app/post/components/list";
+import Category from "@/components/category";
 import PageHeader from "@/components/page-header";
-import PostList from "@/components/posts/list";
 
 const AllBlogsPage = () => {
   const posts = allPosts.sort((a, b) =>
@@ -11,7 +12,9 @@ const AllBlogsPage = () => {
 
   return (
     <div className="container mx-auto max-w-3xl">
+      <Category />
       <PageHeader titleInfo="I write things about" titleInfoMain="React" />
+
       <PostList posts={posts} />
     </div>
   );

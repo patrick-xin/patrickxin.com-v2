@@ -1,4 +1,5 @@
 /* eslint-disable  */
+// https://gist.github.com/mattiaz9/53cb67040fa135cb395b1d015a200aff
 import "server-only";
 
 import { decode, encode } from "blurhash";

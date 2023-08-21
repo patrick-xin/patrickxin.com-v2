@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "next-themes";
-import React from "react";
+import { SessionProvider } from "next-auth/react";
 
 type Props = {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ type Props = {
 const AppProvider = ({ children }: Props) => {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      {children}
+      <SessionProvider>{children}</SessionProvider>
     </ThemeProvider>
   );
 };

@@ -1,24 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-import { Button } from "../ui/button";
+import { getServerSession } from "next-auth";
+import { Button } from "@/components/ui/button";
+import { authOptions } from "@/lib/auth";
 import { ThemeToggle } from "./theme-toggle";
+import UserProfile from "./profile";
 
-const Header = () => {
+const Header = async () => {
+  const session = await getServerSession(authOptions);
+
   return (
-    <header className="sticky top-0 z-50 mx-auto h-12 w-full max-w-6xl px-24 backdrop-blur md:h-16">
+    <header className="sticky top-0 z-40 mx-auto h-12 w-full max-w-7xl px-24 backdrop-blur md:h-16">
       <nav
         className="mx-auto flex h-full w-full max-w-7xl items-center justify-between
        px-8 md:px-12"
       >
-        <div>
+        <div className="flex flex-1 items-center">
           <Link href="/">
             <Image alt="logo-image" src="/logo.svg" height={32} width={32} />
           </Link>
-        </div>
-        <div className="hidden lg:flex">
-          <ul className="flex items-center gap-4">
+          <ul className="flex items-center gap-4 pl-24">
             <li>
               <Button asChild variant="link">
                 <Link href="/">home</Link>
@@ -30,9 +32,12 @@ const Header = () => {
               </Button>
             </li>
           </ul>
-          <div className="ml-12 hidden lg:mt-1 lg:block">
+        </div>
+        <div className="hidden items-center lg:flex">
+          <div className="mx-12 lg:mt-1 lg:block">
             <ThemeToggle />
           </div>
+          {session ? <UserProfile session={session} /> : null}
         </div>
       </nav>
     </header>

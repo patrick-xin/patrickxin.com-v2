@@ -19,6 +19,8 @@ export type Post = {
   isPublished: boolean
   toc: boolean
   thumbnail?: any | undefined
+  category: 'web' | 'ai'
+  tags: string[]
   /** MDX file body */
   body: MDX
   readingTime: json
