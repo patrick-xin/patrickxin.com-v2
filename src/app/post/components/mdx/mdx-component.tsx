@@ -2,11 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  HashIcon,
-  QuoteEndIcon,
-  QuoteStartIcon,
-} from "../../../../components/icon";
+import { HashIcon, QuoteEndIcon, QuoteStartIcon } from "@/components/icon";
+import Pre from "./pre";
 
 const MDXComponents = {
   MDXImage: ({ ...props }) => (
@@ -39,7 +36,7 @@ const MDXComponents = {
         <a
           {...props}
           href={props.href}
-          className="ml-2 mt-1 inline-block origin-left scale-0 text-red-500 opacity-0
+          className="ml-2 mt-1 inline-block origin-left scale-0 text-site-foreground opacity-0
           transition-transform duration-75 ease-out group-hover:scale-100
           group-hover:opacity-100"
         >
@@ -70,13 +67,13 @@ const MDXComponents = {
       <h3
         {...props}
         data-heading
-        className="group flex scroll-mt-20 items-center py-2 font-code text-xl font-semibold capitalize"
+        className="group my-4 flex scroll-mt-20 items-center font-code text-xl font-semibold capitalize"
       />
     );
   },
   p: ({ ...props }) => {
     return (
-      <p {...props} className="my-6 leading-8 md:my-6 lg:my-8  xl:my-10" />
+      <p {...props} className="my-6 leading-8 md:leading-10 lg:my-8 xl:my-10" />
     );
   },
   em: ({ ...props }) => {
@@ -88,7 +85,7 @@ const MDXComponents = {
   blockquote: ({ ...props }) => {
     return (
       <div
-        className="relative mx-auto my-4 flex rounded-lg bg-gray-50 p-2 font-body font-semibold dark:bg-zinc-900 lg:my-12 lg:text-xl
+        className="relative mx-auto my-4 flex rounded-lg bg-gray-50 p-2 font-quote font-semibold dark:bg-white/5 lg:my-12 lg:text-xl
 "
       >
         <div>
@@ -103,18 +100,18 @@ const MDXComponents = {
   },
   ul: ({ ...props }) => (
     <ul
-      className="my-4 list-inside list-disc space-y-1 font-medium italic
-       leading-6 md:my-6 md:ml-4 md:pl-8 lg:space-y-3 lg:leading-9"
+      className="my-6 list-inside list-disc space-y-2 text-sm font-medium italic
+       leading-8 md:my-6 md:ml-4 md:pl-8 lg:space-y-3 lg:leading-9"
       {...props}
     />
   ),
   ol: ({ ...props }) => (
     <ol
-      className="list-inside list-decimal space-y-1 p-2 text-sm font-medium italic leading-6 md:my-4 md:p-4 md:pl-10 md:leading-7 lg:my-6 lg:space-y-3 lg:text-lg lg:leading-9"
+      className="list-inside list-decimal space-y-2 p-2 text-sm font-medium italic leading-6 md:my-4 md:p-4 md:pl-10 md:leading-7 lg:my-6 lg:space-y-3 lg:text-lg lg:leading-9"
       {...props}
     />
   ),
-  // pre: Pre,
+  pre: Pre,
 };
 
 export default MDXComponents;

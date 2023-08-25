@@ -13,9 +13,10 @@ const GradiantLink = ({ name, isActive, href, isUppercase = false }: Props) => {
   return (
     <Link
       className={cn(
-        "inline-block group relative px-3 py-1 rounded-md text-sm font-medium transition-all duration-200",
+        "inline-block group hover:underline relative px-3 py-1 rounded-md text-xs font-medium transition-all duration-200",
         {
-          "bg-purple-400/20  hover:bg-purple-500/20 text-gray-100": isActive,
+          "bg-purple-400/20 hover:no-underline  hover:bg-purple-500/20 text-gray-100 dark:text-gray-100":
+            isActive,
           uppercase: isUppercase,
         },
       )}

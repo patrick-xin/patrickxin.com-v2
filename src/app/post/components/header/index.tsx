@@ -8,6 +8,7 @@ import PublishTime from "./publish-time";
 import ReadingTime from "./reading-time";
 import PostTitle from "./title";
 import PostStats from "../status";
+import PostThumbnail from "./thumbnail";
 
 type PostHeaderProps = Pick<
   Post,
@@ -27,16 +28,21 @@ const PostHeader = ({
   title,
   slug,
   category,
+  thumbnail,
 }: PostHeaderProps) => {
   return (
-    <header className="lg:py-12">
-      <GradiantLink
-        isUppercase
-        name={category}
-        href={`/post/category/${category}`}
-        isActive
-      />
-      <PostTitle title={title} isGradient />
+    <div className="lg:py-12">
+      <div className="space-y-2 lg:space-y-4">
+        <GradiantLink
+          isUppercase
+          name={category}
+          href={`/category/${category}`}
+          isActive
+        />
+
+        <PostTitle title={title} isGradient />
+      </div>
+
       <div className="flex items-center justify-between md:my-4 lg:my-8">
         <div className="grid w-full grid-cols-1 md:grid-cols-6 lg:mb-12">
           <div className="col-span-3 flex w-full items-center gap-4">
@@ -56,14 +62,16 @@ const PostHeader = ({
       </div>
 
       <Description description={description} />
-
-      {/* <PostThumbnail
-        title={title}
-        src={thumbnail.url}
-        author={thumbnail.author}
-        fromUrl={thumbnail.from}
-      /> */}
-    </header>
+      <div className="-mx-4 md:mx-0">
+        <PostThumbnail
+          size="lg"
+          title={title}
+          src={thumbnail.url}
+          author={thumbnail.author}
+          fromUrl={thumbnail.from}
+        />
+      </div>
+    </div>
   );
 };
 

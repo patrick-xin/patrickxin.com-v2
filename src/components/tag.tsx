@@ -3,7 +3,7 @@ interface TagProps {
 }
 const Tag = ({ text }: TagProps) => {
   return (
-    <div className="mb-2 mr-2 inline-block rounded-full bg-indigo-500/40 px-3 py-1 text-sm font-semibold">
+    <div className="mb-2 mr-2 inline-block rounded-full border border-gray-200/5 bg-indigo-500/5 px-3 py-1 text-xs font-semibold">
       {text}
     </div>
   );

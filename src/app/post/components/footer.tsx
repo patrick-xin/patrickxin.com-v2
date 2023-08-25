@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "@/lib/hooks/useFetch";
 import type { CommentWithUserAndReply } from "@/types";
+import Tag from "@/components/tag";
 import CommentBox from "./comment/box";
 import CommentForm from "./comment/form";
-import Tag from "../../../../components/tag";
 
 type PostFooterProps = { slug: string; tags: string[] };
 
@@ -23,9 +23,8 @@ const PostFooter = ({ slug, tags }: PostFooterProps) => {
 
   return (
     <section className="scroll-mt-24">
-      <div className="my-16 flex items-center gap-4">
-        <div className="-mt-2.5 text-xl">Tags: </div>
-        <div className="flex">
+      <div className="my-6 flex items-center gap-4 lg:my-16">
+        <div className="flex flex-wrap">
           {tags.map((tag) => (
             <Tag key={tag} text={tag} />
           ))}
@@ -39,7 +38,7 @@ const PostFooter = ({ slug, tags }: PostFooterProps) => {
       >
         {data?.comments.length !== 0 ? "Comments" : null}
       </div>
-      <div className="mx-auto my-12 max-w-4xl lg:my-20">
+      <div className="mx-auto my-6 max-w-4xl md:my-12 lg:my-20">
         <div className="space-y-6 md:space-y-8">
           {c &&
             c.map((comment) => (
@@ -61,7 +60,7 @@ const PostFooter = ({ slug, tags }: PostFooterProps) => {
                     </div>
 
                     {comment.reply && (
-                      <div className="my-2 -ml-4 lg:my-4 lg:ml-10">
+                      <div className="my-2 ml-10 lg:my-4">
                         <CommentBox
                           username={comment.reply.to}
                           createdAt={comment.reply.createdAt}

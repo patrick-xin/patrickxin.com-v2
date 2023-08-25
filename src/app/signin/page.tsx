@@ -2,7 +2,7 @@
 
 import { signIn, useSession } from "next-auth/react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -32,24 +32,30 @@ const Page = () => {
           <CardDescription />
         </CardHeader>
         <CardContent>
-          <div className="flex items-center justify-center">
-            <div className="mx-8 flex flex-col">
-              <Button
-                variant="outline"
-                className="my-2"
-                onClick={() => signIn("github", { callbackUrl: search || "/" })}
-              >
-                Sign in with Github
-              </Button>
-              <Button
-                className="my-2"
-                variant="outline"
-                onClick={() => signIn("google", { callbackUrl: search || "/" })}
-              >
-                Sign in with Google
-              </Button>
+          <Suspense>
+            <div className="flex items-center justify-center">
+              <div className="mx-8 flex flex-col">
+                <Button
+                  variant="outline"
+                  className="my-2"
+                  onClick={() =>
+                    signIn("github", { callbackUrl: search || "/" })
+                  }
+                >
+                  Sign in with Github
+                </Button>
+                <Button
+                  className="my-2"
+                  variant="outline"
+                  onClick={() =>
+                    signIn("google", { callbackUrl: search || "/" })
+                  }
+                >
+                  Sign in with Google
+                </Button>
+              </div>
             </div>
-          </div>
+          </Suspense>
         </CardContent>
         <CardFooter />
       </Card>

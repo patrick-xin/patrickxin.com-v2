@@ -46,3 +46,32 @@ export function getRandomColor(): string {
 
   return colorClass;
 }
+
+export const copyToClipboard = (text: string) => {
+  return new Promise((resolve, reject) => {
+    if (navigator?.clipboard) {
+      const cb = navigator.clipboard;
+
+      cb.writeText(text).then(resolve).catch(reject);
+    } else {
+      try {
+        const body = document.querySelector("body");
+
+        const textarea = document.createElement("textarea");
+        body?.appendChild(textarea);
+
+        textarea.value = text;
+        textarea.style.position = `absolute`;
+        textarea.style.left = `-9999px`;
+        textarea.select();
+        document.execCommand("copy");
+
+        body?.removeChild(textarea);
+
+        resolve(text);
+      } catch (e) {
+        reject(e);
+      }
+    }
+  });
+};

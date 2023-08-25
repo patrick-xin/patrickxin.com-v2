@@ -3,8 +3,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import ReadingProgress from "@/components/reading-progress";
 
-const TOC = () => {
+const TableOfContent = () => {
   const [isInView, setInview] = useState(false);
   const [headingId, setHeadingId] = useState<null | string>(null);
   const getAllHeadings = (): HTMLHeadingElement[] => {
@@ -64,7 +65,10 @@ const TOC = () => {
     });
   };
   return (
-    <aside className="py-6 md:my-16 lg:my-20">
+    <div className="relative py-6 md:my-16 lg:my-20">
+      <div className="absolute right-[170px] top-1/2 w-full rotate-90">
+        <ReadingProgress />
+      </div>
       <nav className="flex flex-col">
         <div
           className={cn(
@@ -81,8 +85,8 @@ const TOC = () => {
           {mapHeadings()}
         </motion.div>
       </nav>
-    </aside>
+    </div>
   );
 };
 
-export default TOC;
+export default TableOfContent;

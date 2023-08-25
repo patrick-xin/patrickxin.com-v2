@@ -59,6 +59,7 @@
         "@typescript-eslint/consistent-type-imports": "error",
         "no-promise-executor-return":"off",
         "no-param-reassign":"off",
+        "no-nested-ternary":"off",
          // Ensure `import type` is used when it's necessary
         "no-restricted-syntax": [
           "error",

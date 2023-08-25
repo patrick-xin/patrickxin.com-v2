@@ -9,12 +9,14 @@ type PostPageWraperProps = {
 
 const PostPageWrapper = ({ children }: PostPageWraperProps) => {
   const showTOC = useStore((state) => state.showTOC);
+
   return (
     <motion.div
       initial={{ marginLeft: 0 }}
       animate={{
         marginLeft: showTOC ? "24rem" : 0,
       }}
+      className="relative"
       transition={{ type: "tween" }}
     >
       {children}

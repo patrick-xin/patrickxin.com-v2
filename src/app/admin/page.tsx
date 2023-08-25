@@ -2,6 +2,7 @@ import { ChatBubbleIcon, EyeOpenIcon, HeartIcon } from "@radix-ui/react-icons";
 import { prisma } from "@/lib/db";
 import StatisticsCard from "./_components/stats-card";
 import AddPost from "./_components/add-post";
+import AdminWrapper from "./_components/wrapper";
 
 const getData = async () => {
   const data = await prisma.post.findMany({
@@ -45,10 +46,9 @@ const Page = async () => {
   const data = await getData();
 
   return (
-    <div className="relative mx-auto flex max-w-5xl flex-col justify-center">
+    <AdminWrapper title="Dashboard">
       <AddPost />
-      <h2 className="mb-12 text-3xl font-bold">Dashboard</h2>
-      <section className="mt-20 flex flex-wrap items-center gap-6">
+      <section className="mt-6 flex flex-wrap items-center gap-6">
         <StatisticsCard
           count={data.commentsCount}
           icon={<EyeOpenIcon />}
@@ -68,7 +68,7 @@ const Page = async () => {
           title="Views"
         />
       </section>
-    </div>
+    </AdminWrapper>
   );
 };
 

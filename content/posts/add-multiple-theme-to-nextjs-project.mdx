@@ -5,7 +5,7 @@ publishedAt: 'June 6, 2022'
 isPublished: true
 description: Switch themes easily with few lines of code.
 toc: true
-category: 'ai'
+category: 'web'
 tags: 
   - next.js
   - tailwind
@@ -14,7 +14,7 @@ tags:
 thumbnail:
   {
     'author': 'Keila Hötzel',
-    'url': 'https://images.unsplash.com/photo-1692082664198-611ecfc413e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80',
+    'url': 'https://images.unsplash.com/photo-1692731753659-65d6208a5cbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     'from': 'https://unsplash.com/@keilahoetzel',
   }
 ---
@@ -31,10 +31,12 @@ Initialize a new Next.JS project with Tailwind by running `npx create-next-app w
 
 ### Add Theme Provider
 
-```tsx:pages/_app.tsx {3, 7, 9}
+```tsx:pages/_app.tsx {2, 7, 9}
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
+import type { AppProps } from 'next/app'
+
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

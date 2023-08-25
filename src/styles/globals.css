@@ -5,54 +5,7 @@
 @import './code.css';
 
 @layer base {
-  /* :root {
-    --background: 225, 15%, 95%;
-    --foreground: 215, 14%, 34%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 39, 100%, 45%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 165, 57%, 56%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --radius: 0.5rem;
-    --main: 39, 100%, 45%;
-    --main-reverse: 165, 57%, 56%;
-  }
- 
-  .dark {
-    --background: 240, 19%, 13%;
-    --foreground: 225, 15%, 95%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 165, 57%, 56%;
-    --primary-foreground: 225, 15%, 95%;
-    --secondary: 193, 57%, 54%;
-    --secondary-foreground: 39, 100%, 45%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 193, 57%, 54%;
-    --accent-foreground: 193, 57%, 54%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --main: 165, 57%, 56%;
-    --main-reverse: 39, 100%, 45%;
-  } */
+
 
 :root {
     --background: 0 0% 100%;
@@ -86,7 +39,7 @@
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 240, 17%, 9%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
@@ -119,13 +72,13 @@
     @apply  text-gray-600 dark:bg-[#1A1A26] dark:text-[#f0f1f4]/90 antialiased;
   }
   p {
-    @apply font-body font-normal text-lg;
+    @apply font-body font-normal lg:text-lg;
   }
   code, pre{
     @apply font-code text-[#ff6188] bg-gray-50 dark:bg-[#24283b]  dark:text-[#c0caf5];
   }
   pre {
-    @apply my-4 text-sm tracking-wider overflow-auto rounded-xl rounded-t-none shadow-sm pb-2 md:pb-6;
+    @apply text-xs md:text-sm tracking-wider overflow-auto rounded-xl rounded-t-none shadow-sm pb-2 md:pb-6;
   }
   code {
     @apply text-sm px-0.5 tracking-wider rounded-md;
@@ -140,6 +93,7 @@
   .text-gradient-reversed {
     @apply bg-clip-text text-transparent dark:bg-gradient-to-tl bg-gradient-to-tr from-[#e59500]  to-pink-500 dark:from-[#4dcead] dark:to-blue-500;
   }
+
 }  
 
 
@@ -158,5 +112,18 @@
   }
   .text-outline {
     -webkit-text-stroke: 1px rgba(107, 114, 128, 0.25);
+  }
+  .neon-button {
+    box-shadow: 
+      inset 0 0 10px purple,
+      inset 0 0 20px purple, 
+      inset 0 0 40px purple, 
+      0 0 50px purple, 
+      0 0 100px purple, 
+      0 0 200px purple;
+    border: solid 10px white;
+    text-shadow: 
+    0 0 10px purple, 
+    0 0 20px purple;
   }
 }

@@ -1,33 +1,52 @@
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
-import { Fira_Code, Space_Mono, DM_Serif_Display } from "next/font/google";
+import {
+  Raleway,
+  Poppins,
+  Space_Mono,
+  Architects_Daughter,
+} from "next/font/google";
 
-import Header from "@/components/nav/header";
 import ThemeProvider from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 
-const firaCode = Fira_Code({
+const firaCode = Space_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-code",
+  weight: "400",
 });
 
-const spaceMono = Space_Mono({
+const architectsDaughtere = Architects_Daughter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-quote",
+  weight: "400",
+});
+
+const montserrat = Raleway({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const spaceMono = Poppins({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-body",
   weight: ["400", "700"],
 });
 
-const dmSerifDisplay = DM_Serif_Display({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-heading",
-  weight: ["400"],
-});
+// const dmSerifDisplay = DM_Serif_Display({
+//   subsets: ["latin"],
+//   display: "swap",
+//   variable: "--font-heading",
+//   weight: ["400"],
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -43,15 +62,15 @@ export default function RootLayout(props: {
       <body
         className={cn(
           firaCode.variable,
-          dmSerifDisplay.variable,
+          montserrat.variable,
           spaceMono.variable,
+          architectsDaughtere.variable,
           "relative min-h-full max-w-[100vw]",
         )}
       >
         <ThemeProvider>
           <main className="flex min-h-screen flex-col">
-            <Header />
-            <div className="mx-6 mb-12 mt-8 grow md:mx-12 lg:mx-0 lg:mt-32">
+            <div className="mx-4 mb-12 mt-20 grow md:mx-6 lg:mx-0">
               {props.children}
             </div>
             <Footer hasMarginBottom={false} />

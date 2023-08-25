@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db";
 import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { CommentWithUser } from "@/types";
 import CommentTableBody from "@/app/admin/comments/comment-table";
+import AdminWrapper from "../_components/wrapper";
 
 const getComments = async () => {
   return prisma.comment.findMany({
@@ -27,10 +28,7 @@ const getComments = async () => {
 const CommentsPage = async () => {
   const comments: CommentWithUser[] = await getComments();
   return (
-    <div className="mx-auto flex max-w-6xl flex-col justify-center">
-      <h2 className="mb-12 text-3xl font-bold">
-        Total Comments: {comments.length}
-      </h2>
+    <AdminWrapper title={`Total Comments: ${comments.length}`}>
       <Table>
         <TableHeader>
           <TableRow>
@@ -44,7 +42,7 @@ const CommentsPage = async () => {
         </TableHeader>
         <CommentTableBody comments={comments} />
       </Table>
-    </div>
+    </AdminWrapper>
   );
 };
 

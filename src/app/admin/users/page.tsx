@@ -7,6 +7,7 @@ import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { UserWithComments } from "@/types";
 import UserTableBody from "@/app/admin/users/user-table";
 import { authOptions } from "@/lib/auth";
+import AdminWrapper from "../_components/wrapper";
 
 const getUsers = async () => {
   return prisma.user.findMany({
@@ -37,8 +38,7 @@ const Page = async () => {
     redirect("/");
   }
   return (
-    <div className="mx-auto flex max-w-6xl flex-col justify-center">
-      <h2 className="mb-12 text-3xl font-bold">Total Users: {users.length}</h2>
+    <AdminWrapper title={`Total Users: ${users.length}`}>
       <Table>
         <TableHeader>
           <TableRow className="hover:bg-transparent">
@@ -51,7 +51,7 @@ const Page = async () => {
         </TableHeader>
         <UserTableBody users={users} />
       </Table>
-    </div>
+    </AdminWrapper>
   );
 };
 

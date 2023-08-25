@@ -92,7 +92,7 @@ const CommentForm = ({
                 Submit
               </Button>
             ) : (
-              <div className="group relative">
+              <div className="group relative mt-2">
                 <Button asChild variant="secondary">
                   <div>
                     <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-l from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-70 blur-md transition-all duration-200 group-hover:scale-110" />

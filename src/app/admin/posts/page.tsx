@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import AdminWrapper from "../_components/wrapper";
 
 const getData = async () => {
   return prisma.post.findMany({
@@ -25,8 +26,7 @@ const Page = async () => {
   const posts = await getData();
 
   return (
-    <div className="mx-auto flex max-w-6xl flex-col justify-center">
-      <h2 className="mb-12 text-3xl font-bold">Total Posts: {posts.length}</h2>
+    <AdminWrapper title={`Total Posts: ${posts.length}`}>
       <Table>
         <TableHeader>
           <TableRow className="hover:bg-transparent">
@@ -47,7 +47,7 @@ const Page = async () => {
           ))}
         </TableBody>
       </Table>
-    </div>
+    </AdminWrapper>
   );
 };
 

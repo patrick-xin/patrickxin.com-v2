@@ -63,6 +63,7 @@ module.exports = {
         code: ["var(--font-code)"],
         body: ["var(--font-body)"],
         heading: ["var(--font-heading)"],
+        quote: ["var(--font-quote)"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -91,6 +92,9 @@ module.exports = {
         100: 100,
         200: 200,
       },
+      backgroundImage:{
+        "code-border":"radial-gradient(100% 100% at 0 0,#4d4db3 0,#4d4db30d 50%,#4d4db380 100%)"
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

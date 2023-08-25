@@ -168,7 +168,7 @@ pre[class*='language-'] {
 }
 
 .code-line {
-  @apply block px-5 -mx-[13px] py-1 hover:bg-[#4dcead]/5 transition-colors ease-linear;
+  @apply block px-5 -mx-[13px] py-1 hover:bg-gray-100 dark:hover:bg-[#4dcead]/5 transition-colors ease-linear;
 }
 
 .code-line.inserted {
@@ -184,14 +184,15 @@ pre[class*='language-'] {
 }
 
 .highlight-line {
-  @apply dark:bg-[#4dcead]/10 bg-gray-100 min-w-max -mx-3 md:-mx-4 border-l-rose-400 dark:border-l-teal-600 border-l-4;
+  @apply dark:bg-[#4dcead]/10 bg-gray-100 min-w-max border-l-rose-400 dark:border-l-teal-600 md:border-l-4;
 }
 
 .line-number::before {
-  @apply inline-block w-4 text-right mr-5 -ml-2 text-gray-400;
+  @apply md:inline-block w-4 text-right mr-5 hidden -ml-2 text-gray-400;
   content: attr(line);
 }
+
 .rehype-code-title {
-  @apply dark:bg-[#24283b] bg-[#F9FAFB] text-[#e59500] p-2 pl-6 rounded-xl rounded-b-none border-[#4dcead]/20 border-b w-full text-sm -mb-2;
+  @apply dark:bg-[#24283b] -mx-4 md:-mx-0 font-code relative bg-[#F9FAFB] text-[#e59500] p-2 lg:pl-6 rounded-xl rounded-b-none border-[#4dcead]/20 border-b text-sm;
 }
 
