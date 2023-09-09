@@ -5,10 +5,8 @@ import { Button } from "@/components/ui/button";
 import { usePostViews } from "../../hooks";
 
 const PostViewStats = ({ slug }: { slug: string }) => {
-  const { views, isLoading, error } = usePostViews(slug);
+  const { views } = usePostViews(slug);
 
-  if (isLoading) return null;
-  if (error) return null;
   return (
     <div className="flex items-center gap-1">
       <Button variant="ghost" size="icon" className="cursor-default">

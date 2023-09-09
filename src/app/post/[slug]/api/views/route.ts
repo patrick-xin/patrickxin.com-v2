@@ -6,6 +6,7 @@ export async function GET(
   { params }: { params: { slug: string } },
 ) {
   const { slug } = params;
+
   const post = await prisma.post.update({
     where: {
       slug,

@@ -27,7 +27,7 @@ export const usePostLikes = (slug: string) => {
 export const usePostViews = (slug: string) => {
   const { data, error, isLoading } = useSWR<{ views: number }>(
     `/post/${slug}/api/views`,
-
+    fetcher,
     { revalidateOnFocus: false },
   );
   return { views: data?.views, isLoading, error };
