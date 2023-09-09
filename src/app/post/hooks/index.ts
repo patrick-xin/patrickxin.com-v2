@@ -25,10 +25,9 @@ export const usePostLikes = (slug: string) => {
 };
 
 export const usePostViews = (slug: string) => {
-  const shouldFetch = process.env.NODE_ENV === "production";
   const { data, error, isLoading } = useSWR<{ views: number }>(
-    shouldFetch ? `/post/${slug}/api/views` : null,
-    fetcher,
+    `/post/${slug}/api/views`,
+
     { revalidateOnFocus: false },
   );
   return { views: data?.views, isLoading, error };
