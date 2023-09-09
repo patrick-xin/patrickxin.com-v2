@@ -43,12 +43,11 @@ const MovingHeader = ({
       )}
     >
       <motion.header
+        viewport={{ once: true }}
         initial="open"
         animate={reached ? "collapsed" : "open"}
         variants={headerVariants}
-        className={cn("flex items-center transition-all ease-linear", {
-          "backdrop-blur-md": reached,
-        })}
+        className={cn("flex items-center transition-all ease-linear", {})}
       >
         {!reached ? (
           <MainNav />

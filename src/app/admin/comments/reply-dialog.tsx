@@ -17,7 +17,7 @@ interface AdminDialogProps {
   username: string;
   commentId: string;
   open: boolean;
-  onChange: () => void;
+  closeModal: () => void;
   content: string;
   setReplied: () => void;
 }
@@ -26,7 +26,7 @@ const ReplyDialog = ({
   username,
   commentId,
   open,
-  onChange,
+  closeModal,
   content,
   setReplied,
 }: AdminDialogProps) => {
@@ -50,15 +50,15 @@ const ReplyDialog = ({
       });
       setReply("");
       setReplied();
-      onChange();
+      closeModal();
     }
   };
   return (
-    <Dialog open={open} onOpenChange={onChange}>
+    <Dialog open={open} onOpenChange={closeModal}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="mb-4">
-            Reply to <span className="text-site-foreground">{username}</span>{" "}
+            Reply to <span>{username}</span>{" "}
           </DialogTitle>
           <DialogDescription className="mt-2 text-muted-foreground">
             {content}

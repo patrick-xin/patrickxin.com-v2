@@ -18,7 +18,7 @@ type Props = {
 
 const PostItem = async ({ post }: Props) => {
   return (
-    <div className="w-full border-b py-4 dark:border-white/10 lg:py-6">
+    <div className="w-full border-b border-border/20 py-4 lg:py-6">
       <Link href={`/post/${post.slug}`} className="group inline-block">
         <PublishTime
           className="text-xs dark:text-gray-400 lg:text-sm"

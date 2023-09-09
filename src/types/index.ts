@@ -35,6 +35,21 @@ export type CommentWithUser = Prisma.CommentGetPayload<{
   };
 }>;
 
+export type PostWithCommentsAndCount = Prisma.PostGetPayload<{
+  include: {
+    comments: {
+      select: {
+        id: true;
+      };
+    };
+    _count: {
+      select: {
+        comments: true;
+      };
+    };
+  };
+}>;
+
 export interface CommentWithUserAndReply
   extends Omit<CommentWithUserAndReplyRaw, "createdAt" | "reply"> {
   createdAt: string;
@@ -48,3 +63,43 @@ interface ReplyWithCreatedAtString extends Omit<Reply, "createdAt"> {
 export type CommentWithUserAndReplyRaw = Prisma.CommentGetPayload<{
   include: { user: true; reply: true };
 }>;
+
+export type BookmarkType =
+  | "article"
+  | "inspiration"
+  | "resources"
+  | "videos"
+  | "podcast";
+
+export type Bookmark = {
+  title: string;
+  path: string;
+  href: string;
+  description: string;
+  image: string;
+};
+
+export interface BookmarkCategory {
+  articles?: { intro: string; data: Bookmark[] };
+  inspirations?: { intro: string; data: Bookmark[] };
+  resources?: { intro: string; data: Bookmark[] };
+  tools?: { intro: string; data: Bookmark[] };
+  videos?: { intro: string; data: Bookmark[] };
+  podcast?: { intro: string; data: Bookmark[] };
+  gpt?: { intro: string; data: Bookmark[] };
+  prompting?: { intro: string; data: Bookmark[] };
+  "text-to-image"?: { intro: string; data: Bookmark[] };
+}
+
+export interface Bookmarks {
+  web: BookmarkCategory;
+  ai: BookmarkCategory;
+}
+
+export interface IBookmarkItem {
+  title: string;
+  path: string;
+  href: string;
+  description: string;
+  image: string;
+}

@@ -34,6 +34,7 @@ const Category = () => {
               name={title}
               href={href}
               isActive={path === active}
+              center
             />
           ))}
         </div>

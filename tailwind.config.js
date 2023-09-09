@@ -17,9 +17,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        border: "hsl(var(--border) / <alpha-value>)",
+        input: "hsl(var(--input) / <alpha-value>)",
+        ring: "hsl(var(--ring) / <alpha-value>)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -83,6 +83,7 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "spin-slow": "spin 3s linear infinite",
       },
       zIndex: {
         '-10': '-10',
@@ -94,7 +95,11 @@ module.exports = {
       },
       backgroundImage:{
         "code-border":"radial-gradient(100% 100% at 0 0,#4d4db3 0,#4d4db30d 50%,#4d4db380 100%)"
-      }
+      },
+      boxShadow: {
+        darkGlow: '0 0 5px #a1c4fd, 0 0 10px #a1c4fd, 0 0 15px #c2e9fb, 0 0 20px #c2e9fb',
+        lightGlow: '0 0 5px #cfb1d1, 0 0 10px #cfb1d1, 0 0 15px #dcace0, 0 0 20px #dcace0',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -20,6 +20,7 @@ const PostPageHeader = ({ category, title }: PostPageHeaderProps) => {
             name={category}
             href={`/category/${category}`}
             isActive
+            center
           />
         </div>
         <PostTitle title={title} size="sm" isGradient />

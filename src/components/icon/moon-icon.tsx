@@ -2,7 +2,7 @@ const MoonIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="absolute h-[1rem] w-[1rem] -rotate-45 scale-0 text-site transition-all dark:-rotate-45 dark:scale-100"
+      className="absolute h-[1rem] w-[1rem] -rotate-45 scale-0 text-primary transition-all dark:-rotate-45 dark:scale-100"
       viewBox="0 0 24 24"
       fill="currentColor"
     >

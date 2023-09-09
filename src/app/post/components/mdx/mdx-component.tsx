@@ -17,7 +17,6 @@ const MDXComponents = {
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
     />
   ),
-
   a: ({ ...props }) => {
     if (props.href.startsWith("https")) {
       return (
@@ -36,7 +35,7 @@ const MDXComponents = {
         <a
           {...props}
           href={props.href}
-          className="ml-2 mt-1 inline-block origin-left scale-0 text-site-foreground opacity-0
+          className="ml-2 mt-1 inline-block origin-left scale-0 opacity-0
           transition-transform duration-75 ease-out group-hover:scale-100
           group-hover:opacity-100"
         >
@@ -80,7 +79,7 @@ const MDXComponents = {
     return <em {...props} className="italic" />;
   },
   hr: ({ ...props }) => {
-    return <hr {...props} className="my-10" />;
+    return <hr {...props} className="my-10 h-[1px] border-border/20" />;
   },
   blockquote: ({ ...props }) => {
     return (

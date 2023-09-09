@@ -8,7 +8,7 @@ const AllBlogsPage = () => {
   return (
     <>
       <MovingHeader count={320} />
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto my-4 max-w-4xl md:my-6">
         <Category />
         <PostList />
       </div>

@@ -1,34 +1,15 @@
 import { HeartIcon, HeartFilledIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useLocalStorage } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
+import { usePostLikes } from "../../hooks";
 
-const PostLikeStats = ({
-  slug,
-  likes,
-  setLikes,
-}: {
-  slug: string;
-  likes: number | undefined;
-  setLikes: (likes: number) => void;
-}) => {
-  const [isLiked, setLike] = useLocalStorage(slug, false);
-  const [pending, setPending] = useState(false);
+const PostLikeStats = ({ slug }: { slug: string }) => {
+  const { handleLike, isLiked, isLoading, likes } = usePostLikes(slug);
 
-  const handleLike = async () => {
-    if (isLiked) return;
-    setPending(true);
-    setLike(false);
-    await fetch(`/post/${slug}/api/likes`);
-
-    setLikes(likes! + 1);
-    setPending(false);
-  };
   return (
     <div className="flex items-center gap-1">
       <Button
-        disabled={pending || isLiked}
+        disabled={isLiked || isLoading}
         variant="ghost"
         onClick={handleLike}
         className={cn("relative", { "cursor-not-allowed": false })}

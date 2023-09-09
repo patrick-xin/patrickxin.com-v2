@@ -11,6 +11,9 @@ module.exports = withPlugins([withContentlayer, withBundleAnalyzer], {
   eslint: {
     dirs: ["."],
   },
+  experimental: {
+    serverActions: true,
+  },
   poweredByHeader: false,
   basePath: "",
   transpilePackages: ["@plaiceholder/ui"],

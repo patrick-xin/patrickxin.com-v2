@@ -6,9 +6,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex gap-6">
+    <div className="grid grid-cols-6">
       <Sidebar />
-      <div className="w-full">{children}</div>
+      <div className="col-span-full col-start-2 mx-auto max-w-5xl">
+        {children}
+      </div>
     </div>
   );
 }

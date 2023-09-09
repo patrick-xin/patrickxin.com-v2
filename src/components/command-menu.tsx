@@ -1,11 +1,12 @@
 "use client";
 
-import * as React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { DialogProps } from "@radix-ui/react-alert-dialog";
 import {
   ExitIcon,
   LaptopIcon,
+  MagnifyingGlassIcon,
   MoonIcon,
   SunIcon,
   TextAlignJustifyIcon,
@@ -17,20 +18,23 @@ import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
 import { CATEGORIES, NAGIGATIONS } from "@/lib/constants";
+import useDebouncedSearch from "@/lib/hooks/useDebouncedSearch";
 import { Button } from "./ui/button";
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const { setTheme } = useTheme();
   const { data } = useSession();
-  React.useEffect(() => {
+
+  const { search, posts, loading, handleInputChange } = useDebouncedSearch();
+
+  useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -42,18 +46,19 @@ export function CommandMenu({ ...props }: DialogProps) {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const runCommand = React.useCallback((command: () => unknown) => {
+  const runCommand = useCallback((command: () => unknown) => {
     setOpen(false);
+
     command();
   }, []);
 
   return (
-    <>
+    <div>
       <Button
         size="icon"
+        variant="outline"
         onClick={() => setOpen(true)}
         {...props}
-        className="border-gray-200 bg-transparent text-gray-300 hover:border-gray-500 hover:bg-transparent dark:border-gray-200/50 dark:hover:border-gray-100/50 dark:hover:text-gray-100 lg:border"
       >
         <TextAlignJustifyIcon className="h-4 w-4 text-gray-400 dark:text-gray-100 lg:hidden" />
         <kbd className="pointer-events-none hidden select-none items-center gap-1 rounded px-1.5 font-medium text-gray-500 lg:inline-flex">
@@ -62,11 +67,23 @@ export function CommandMenu({ ...props }: DialogProps) {
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <div className="flex items-center border-b border-border/20 px-3">
+          <MagnifyingGlassIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+          <input
+            value={search}
+            className="flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            onChange={(e) => handleInputChange(e)}
+            placeholder="Search whole website..."
+          />
+        </div>
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty className="my-6 text-center font-black">
+            No results found.
+          </CommandEmpty>
           <CommandGroup heading="Links">
-            {NAGIGATIONS.map((navItem) => (
+            {NAGIGATIONS.filter((nav) =>
+              nav.title.toLowerCase().includes(search),
+            ).map((navItem) => (
               <CommandItem
                 className="flex items-center gap-3"
                 key={navItem.href}
@@ -83,8 +100,37 @@ export function CommandMenu({ ...props }: DialogProps) {
             ))}
           </CommandGroup>
           <CommandSeparator />
+          <CommandGroup heading="Posts">
+            {loading ? (
+              <>
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <CommandItem
+                    className="my-2 h-6 w-full animate-pulse rounded bg-primary/20 px-2 py-1.5"
+                    key={i}
+                  />
+                ))}
+              </>
+            ) : (
+              posts?.map((post) => (
+                <CommandItem
+                  className="flex items-center gap-3"
+                  key={post.slug}
+                  onSelect={() => {
+                    runCommand(() =>
+                      router.push(`/post/${post.slug}`, { scroll: true }),
+                    );
+                  }}
+                >
+                  <span>{post.title}</span>
+                </CommandItem>
+              ))
+            )}
+          </CommandGroup>
+          <CommandSeparator />
           <CommandGroup heading="Category">
-            {CATEGORIES.map((navItem) => (
+            {CATEGORIES.filter((nav) =>
+              nav.title.toLowerCase().includes(search),
+            ).map((navItem) => (
               <CommandItem
                 className="flex items-center gap-3"
                 key={navItem.href}
@@ -132,6 +178,6 @@ export function CommandMenu({ ...props }: DialogProps) {
           )}
         </CommandList>
       </CommandDialog>
-    </>
+    </div>
   );
 }

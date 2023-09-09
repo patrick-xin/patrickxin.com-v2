@@ -15,6 +15,7 @@ export type Post = {
   type: 'Post'
   title: string
   publishedAt: string
+  updatededAt?: string | undefined
   description: string
   isPublished: boolean
   toc: boolean

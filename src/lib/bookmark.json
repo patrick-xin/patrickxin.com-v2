@@ -1,0 +1,54 @@
+{
+  "web": [
+    {
+      "title": "React - a JavaScript library for building user interfaces",
+      "path": "react",
+      "href": "www.reactjs.org",
+      "type": "article",
+      "description": "React is a JavaScript library for building user interfaces. Learn what React is all about on our homepage or in the tutorial.",
+      "logoImage": "/assets/images/bookmarks/claude.png"
+    },
+    {
+      "title": "React - a JavaScript library for building user interfaces",
+      "path": "react",
+      "href": "www.reactjs.org",
+      "type": "article",
+      "description": "React is a JavaScript library for building user interfaces. Learn what React is all about on our homepage or in the tutorial.",
+      "logoImage": "/assets/images/bookmarks/claude.png"
+    },
+    {
+      "title": "React - a JavaScript library for building user interfaces",
+      "path": "react",
+      "href": "www.reactjs.org",
+      "type": "article",
+      "description": "React is a JavaScript library for building user interfaces. Learn what React is all about on our homepage or in the tutorial.",
+      "logoImage": "/assets/images/bookmarks/claude.png"
+    }
+  ],
+  "ai": [
+    {
+      "title": "Prompt - Learn Basic of Prompting",
+      "path": "learnprompting",
+      "href": "https://learnprompting.org/",
+      "type": "resources",
+      "description": "",
+      "logoImage": "/assets/images/bookmarks/claude.png"
+    },
+    {
+      "title": "Prompt - Learn Basic of Prompting",
+      "path": "learnprompting",
+      "href": "https://learnprompting.org/",
+      "type": "resources",
+      "description": "",
+      "logoImage": "/assets/images/bookmarks/claude.png"
+    },
+    {
+      "title": "Prompt - Learn Basic of Prompting",
+      "path": "learnprompting",
+      "href": "https://learnprompting.org/",
+      "type": "resources",
+      "description": "",
+      "logoImage": "/assets/images/bookmarks/claude.png"
+    }
+  ]
+}

@@ -3,9 +3,14 @@
 import { Progress } from "@/components/ui/progress";
 import useProgress from "@/lib/hooks/useProgress";
 
-const ReadingProgress = () => {
+const ReadingProgress = ({ height }: { height: number }) => {
   const readingProgress = useProgress();
-  return <Progress value={readingProgress * 100} />;
+
+  return (
+    <div>
+      <Progress value={readingProgress * 100} height={height} />
+    </div>
+  );
 };
 
 export default ReadingProgress;

@@ -1,13 +1,7 @@
 import { prisma } from "@/lib/db";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import AdminWrapper from "../_components/wrapper";
+import PostTable from "./post-table";
 
 const getData = async () => {
   return prisma.post.findMany({
@@ -30,22 +24,14 @@ const Page = async () => {
       <Table>
         <TableHeader>
           <TableRow className="hover:bg-transparent">
-            <TableHead className="w-[200px]">Slug</TableHead>
+            <TableHead className="w-auto">Slug</TableHead>
             <TableHead className="w-[100px]">Views</TableHead>
             <TableHead className="w-[100px]">Likes</TableHead>
-            <TableHead className="w-[100px]">Total comments</TableHead>
+            <TableHead className="w-[140px]">Total comments</TableHead>
+            <TableHead className="w-[100px]">Actions</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {posts.map((post) => (
-            <TableRow key={post.id}>
-              <TableCell>{post.slug}</TableCell>
-              <TableCell>{post.view_count}</TableCell>
-              <TableCell>{post.like_count}</TableCell>
-              <TableCell>{post._count.comments}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        <PostTable posts={posts} />
       </Table>
     </AdminWrapper>
   );

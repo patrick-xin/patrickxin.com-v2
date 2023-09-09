@@ -6,7 +6,7 @@ const AdminWrapper = ({
   title: string;
 }) => {
   return (
-    <div className="mx-auto flex max-w-5xl flex-col justify-center">
+    <div className="w-full">
       <h2 className="mb-6 text-3xl font-bold">{title}</h2>
       {children}
     </div>

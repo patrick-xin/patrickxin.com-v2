@@ -11,7 +11,6 @@ import {
 import ThemeProvider from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
-import Footer from "@/components/footer";
 
 const firaCode = Space_Mono({
   subsets: ["latin"],
@@ -58,7 +57,7 @@ export default function RootLayout(props: {
   modal: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           firaCode.variable,
@@ -70,10 +69,9 @@ export default function RootLayout(props: {
       >
         <ThemeProvider>
           <main className="flex min-h-screen flex-col">
-            <div className="mx-4 mb-12 mt-20 grow md:mx-6 lg:mx-0">
+            <div className="mx-4 mt-20 grow md:mx-6 lg:mx-0">
               {props.children}
             </div>
-            <Footer hasMarginBottom={false} />
           </main>
 
           <Toaster />

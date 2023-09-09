@@ -1,20 +1,13 @@
 import { HeartFilledIcon, VercelLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
-type FooterProps = {
-  hasMarginBottom: boolean;
-};
-
-const Footer = ({ hasMarginBottom }: FooterProps) => {
+const Footer = () => {
   return (
-    <footer
-      className={`flex h-36 justify-center border-t text-xs dark:border-muted-foreground/30 lg:mb-0 lg:h-48 lg:text-sm ${
-        hasMarginBottom ? "mb-16" : "mb-0"
-      } py-4`}
-    >
-      <div className="flex w-full max-w-4xl flex-col justify-between">
+    <footer className="relative flex h-36 justify-center border-t border-border/20 text-xs dark:border-muted-foreground/30 lg:h-48  lg:text-sm">
+      <div className="flex w-full max-w-4xl flex-col justify-between lg:mt-6">
         <div className="flex justify-around lg:mt-2">
-          <div className="flex flex-col gap-1 md:gap-3 lg:gap-4">
+          <div className="flex flex-col gap-1 md:gap-3">
+            <div className="font-semibold">Navigation</div>
             <div>
               <Link href="/">Home</Link>
             </div>
@@ -25,7 +18,9 @@ const Footer = ({ hasMarginBottom }: FooterProps) => {
               <Link href="/post">Post</Link>
             </div>
           </div>
-          <div className="flex flex-col gap-1 md:gap-3 lg:gap-4">
+
+          <div className="flex flex-col gap-1 md:gap-3">
+            <div className="font-semibold">Contact</div>
             <div>
               <a href="/newsletter">Twitter</a>
             </div>
@@ -34,6 +29,7 @@ const Footer = ({ hasMarginBottom }: FooterProps) => {
             </div>
           </div>
           <div className="flex flex-col gap-1 md:gap-3 lg:gap-4">
+            <div className="font-semibold"> </div>
             <div>
               <a href="/newsletter">RSS</a>
             </div>
@@ -43,7 +39,7 @@ const Footer = ({ hasMarginBottom }: FooterProps) => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-4 text-xs">
           <div className="flex items-center">
             <span className="inline-block lg:mb-0">Made with</span>
             <HeartFilledIcon className="mx-1 -mt-0.5 inline-block h-4 w-4 text-red-600" />

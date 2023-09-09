@@ -15,32 +15,29 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
+import { usePostComments } from "../../hooks";
 
 const COMMENT_FORM_SCHEMA = z.object({
   content: z
     .string()
-    .min(10, { message: "Leave something meaningful!" })
-    .max(500, { message: "Wow, you've got lots to say!" }),
+    .min(10, { message: "Please leave something meaningful! 👻" })
+    .max(2000, { message: "Wow, you've got lots to say!" }),
 });
 
 type FormSchemaType = z.infer<typeof COMMENT_FORM_SCHEMA>;
 
-const CommentForm = ({
-  slug,
-  setComments,
-}: {
-  slug: string;
-  setComments: any;
-}) => {
+const CommentForm = ({ slug }: { slug: string }) => {
   const { data: session } = useSession();
+  const { comments, mutate,isLoading } = usePostComments(slug);
   const form = useForm<FormSchemaType>({
+    // TODO: fix COMMENT_FORM_SCHEMA Error
     resolver: zodResolver(COMMENT_FORM_SCHEMA),
   });
   const { toast } = useToast();
+  const buttonDisabled = isLoading ||form.formState.isSubmitting;
   async function onSubmit(values: FormSchemaType) {
     const res = await fetch(`/post/${slug}/api/comments`, {
       method: "POST",
@@ -60,7 +57,7 @@ const CommentForm = ({
         title: "Comment added!",
         description: "I'll get back to you soon. Remember to come back!",
       });
-      setComments(data.comments);
+      mutate({ comments: data.comments, ...comments });
 
       form.setValue("content", "");
     }
@@ -74,7 +71,6 @@ const CommentForm = ({
             name="content"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Comment</FormLabel>
                 <FormControl>
                   <Textarea
                     rows={10}
@@ -88,7 +84,7 @@ const CommentForm = ({
           />
           <div className="flex justify-end">
             {session ? (
-              <Button disabled={!session} type="submit" variant="outline">
+              <Button disabled={buttonDisabled} className="disabled:cursor-not-allowed" type="submit" variant="outline">
                 Submit
               </Button>
             ) : (

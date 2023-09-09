@@ -52,7 +52,7 @@ const Page = async () => {
         <StatisticsCard
           count={data.commentsCount}
           icon={<EyeOpenIcon />}
-          iconBg="bg-site"
+          iconBg="bg-primary/50"
           title="Comments"
         />
         <StatisticsCard

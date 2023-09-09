@@ -24,16 +24,12 @@ const UserTableBody = ({ users }: Props) => {
                   <div className="mt-2 p-2">
                     <div className="flex justify-between gap-1">
                       <div>
-                        <span className="text-base font-bold text-site">
-                          Post:
-                        </span>{" "}
+                        <span className="text-base font-bold">Post:</span>{" "}
                         <span>{comment.postSlug}</span>
                       </div>
                     </div>
                     <div>
-                      <div className="text-base font-bold text-site-foreground">
-                        Comment:
-                      </div>{" "}
+                      <div className="text-base font-bold">Comment:</div>{" "}
                       <div>{comment.content}</div>{" "}
                     </div>
                   </div>

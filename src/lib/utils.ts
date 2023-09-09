@@ -4,9 +4,22 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+type FetcherArgs = Parameters<typeof fetch>;
+type FetcherReturn<T> = Promise<T>;
+
+export const fetcher = <T = any>(...args: FetcherArgs): FetcherReturn<T> =>
+  fetch(...args).then((res) => res.json());
+
 export const getYear = () => {
   const d = new Date();
   return d.getFullYear();
+};
+
+export const capitalizeFirstLetter = (string: string) => {
+  return string
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
 export function absoluteUrl(path: string) {

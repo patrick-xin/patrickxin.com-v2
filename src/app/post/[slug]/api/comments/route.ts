@@ -23,7 +23,11 @@ export async function GET(
     },
   });
 
-  return NextResponse.json({ message: "success", comments });
+  return NextResponse.json({
+    message: "success",
+    comments,
+    commentsCount: comments.length,
+  });
 }
 
 export async function POST(

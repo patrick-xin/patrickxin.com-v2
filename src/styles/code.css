@@ -168,7 +168,7 @@ pre[class*='language-'] {
 }
 
 .code-line {
-  @apply block px-5 -mx-[13px] py-1 hover:bg-gray-100 dark:hover:bg-[#4dcead]/5 transition-colors ease-linear;
+  @apply block px-5 -mx-[13px] py-1 hover:bg-primary/10 transition-colors ease-linear;
 }
 
 .code-line.inserted {
@@ -184,7 +184,7 @@ pre[class*='language-'] {
 }
 
 .highlight-line {
-  @apply dark:bg-[#4dcead]/10 bg-gray-100 min-w-max border-l-rose-400 dark:border-l-teal-600 md:border-l-4;
+  @apply bg-primary/5 min-w-max border-l-rose-400 dark:border-l-teal-600 md:border-l-4;
 }
 
 .line-number::before {

@@ -2,7 +2,7 @@ const SunIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-[1rem] w-[1rem] rotate-0 scale-100 fill-current text-site transition-all dark:-rotate-90 dark:scale-0"
+      className="h-[1rem] w-[1rem] rotate-0 scale-100 fill-current text-orange-500 transition-all dark:-rotate-90 dark:scale-0"
       viewBox="0 0 24 24"
       fill="currentColor"
     >

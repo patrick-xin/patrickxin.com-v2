@@ -17,9 +17,9 @@ const TocButton = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={toggle}
-          className="bottom-12 right-32 z-40 hidden rounded-full bg-[#d3bbe5] p-2 shadow-lg dark:bg-[#4dcead]/50 md:fixed md:block md:p-4"
+          className="bottom-12 right-32 z-40 hidden rounded-full bg-primary/20 p-2 shadow-lg md:p-4 lg:fixed lg:block"
         >
-          <TextAlignCenterIcon className="h-6 w-6 fill-current text-[#f0f1f4]" />
+          <TextAlignCenterIcon className="h-6 w-6 fill-current" />
         </motion.button>
       )}
     </AnimatePresence>

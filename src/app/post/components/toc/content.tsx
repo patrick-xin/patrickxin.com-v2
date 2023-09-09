@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import ReadingProgress from "@/components/reading-progress";
@@ -12,7 +12,8 @@ const TableOfContent = () => {
     return Array.from(document.querySelectorAll("[data-heading]"));
   };
   const headings = useMemo(() => getAllHeadings(), []);
-
+  const [contentHeight, setContentHeight] = useState<number | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const observer = React.useRef<IntersectionObserver>();
   useEffect(() => {
     if (observer.current) {
@@ -37,7 +38,11 @@ const TableOfContent = () => {
     });
     return () => observer.current?.disconnect();
   }, [headings, setInview, setHeadingId]);
-
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.getBoundingClientRect().height);
+    }
+  }, [contentRef]);
   const getLevel = useMemo(() => {
     return (nodeName: string) => {
       return Number(nodeName.replace("H", ""));
@@ -50,10 +55,11 @@ const TableOfContent = () => {
           href={`#${heading.id}`}
           key={heading.id}
           className={cn(
-            "relative hover:text-orange dark:hover:text-mint transition-colors ease-linear cursor-pointer",
+            "relative hover:text-pink-400 transition-colors ease-linear",
             {
-              "text-site": headingId === heading.id && isInView,
-              "text-base lg:text-lg": getLevel(heading.nodeName) === 2,
+              "text-primary hover:text-primary":
+                headingId === heading.id && isInView,
+              "text-sm lg:text-base": getLevel(heading.nodeName) === 2,
               "ml-3 lg:ml-4 text-xs lg:text-sm":
                 getLevel(heading.nodeName) === 3,
             },
@@ -65,26 +71,23 @@ const TableOfContent = () => {
     });
   };
   return (
-    <div className="relative py-6 md:my-16 lg:my-20">
-      <div className="absolute right-[170px] top-1/2 w-full rotate-90">
-        <ReadingProgress />
-      </div>
-      <nav className="flex flex-col">
-        <div
-          className={cn(
-            "mb-6 w-full inline-flex justify-center gap-2 text-site font-heading text-2xl",
-          )}
-        >
+    <div className="relative flex h-full items-center justify-center">
+      <div>
+        <div className="my-10 text-center font-heading text-xl font-semibold">
           Table of Contents
         </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mx-auto flex flex-col space-y-2 md:space-y-4"
-        >
-          {mapHeadings()}
-        </motion.div>
-      </nav>
+        <nav className="relative flex gap-6">
+          <ReadingProgress height={contentHeight ?? 0} />
+          <motion.div
+            ref={contentRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mx-auto flex flex-col space-y-2 md:space-y-4"
+          >
+            {mapHeadings()}
+          </motion.div>
+        </nav>
+      </div>
     </div>
   );
 };

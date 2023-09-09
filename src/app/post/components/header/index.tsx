@@ -38,6 +38,7 @@ const PostHeader = ({
           name={category}
           href={`/category/${category}`}
           isActive
+          center
         />
 
         <PostTitle title={title} isGradient />

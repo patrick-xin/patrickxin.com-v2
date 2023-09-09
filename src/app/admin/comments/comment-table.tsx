@@ -67,7 +67,7 @@ const CommentTableBody = ({ comments }: Props) => {
           <ReplyDialog
             setReplied={() => setReplied(true)}
             open={selected === comment.id}
-            onChange={() => setSelected("")}
+            closeModal={() => setSelected("")}
             username={comment.user?.name!}
             commentId={comment.id}
             content={comment.content}

@@ -65,7 +65,7 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
     <>
       <PostPageWrapper>
         <PostPageHeader category={category} title={title} />
-        <div className="mx-auto mt-6 max-w-3xl lg:mt-0">
+        <div className="mx-auto mt-6 max-w-2xl lg:mt-0">
           <PostHeader
             category={category}
             description={description}

@@ -16,7 +16,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
     <>
       <MovingHeader count={320} />
 
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto my-4 max-w-4xl md:my-6">
         <Category />
         <section className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 md:gap-8 lg:gap-12">
           {posts.map((post) => (
