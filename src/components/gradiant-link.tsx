@@ -37,7 +37,7 @@ const GradiantLink = ({
       href={href}
     >
       {isActive ? (
-        <span className="absolute -inset-1 -z-10 inline-block min-w-[72px] rounded-xl bg-gradient-to-l from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-70 blur-md transition-all duration-200 group-hover:scale-110" />
+        <span className="absolute -inset-1 -z-10 inline-block min-w-[72px] rounded-xl bg-gradient-to-l from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-70 blur transition-all duration-200 group-hover:scale-110" />
       ) : null}
       {icon && <span className="inline-block">{icon}</span>}
 
