@@ -10,9 +10,9 @@ const PostViewStats = ({ slug }: { slug: string }) => {
   return (
     <div className="flex items-center gap-1">
       <Button variant="ghost" size="icon" className="cursor-default">
-        <EyeOpenIcon className="h-4 w-4 text-indigo-700" />
+        <EyeOpenIcon className="h-4 w-4 text-yellow-600" />
       </Button>
-      <div className="text-xs lg:text-sm">{views}</div>
+      <div className="font-heading text-xs lg:text-sm">{views}</div>
     </div>
   );
 };

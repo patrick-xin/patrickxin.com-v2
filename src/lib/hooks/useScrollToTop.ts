@@ -1,9 +1,7 @@
 /* eslint-disable */
-// @ts-nocheck 
+// @ts-nocheck
 
 import { useEffect, useState } from "react";
-
-
 
 export const useScrollToTop = ({ top = 20 }) => {
   const [visible, setVisible] = useState(false);
@@ -25,5 +23,3 @@ export const useScrollToTop = ({ top = 20 }) => {
 
   return { visible, scrollToTop };
 };
-
-

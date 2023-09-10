@@ -54,10 +54,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        site:{
+        site: {
           DEFAULT: "hsl(var(--site))",
           foreground: "hsl(var(--site-foreground))",
-        }
+        },
       },
       fontFamily: {
         code: ["var(--font-code)"],
@@ -86,19 +86,22 @@ module.exports = {
         "spin-slow": "spin 3s linear infinite",
       },
       zIndex: {
-        '-10': '-10',
+        "-10": "-10",
         25: 25,
         50: 50,
         75: 75,
         100: 100,
         200: 200,
       },
-      backgroundImage:{
-        "code-border":"radial-gradient(100% 100% at 0 0,#4d4db3 0,#4d4db30d 50%,#4d4db380 100%)"
+      backgroundImage: {
+        "code-border":
+          "radial-gradient(100% 100% at 0 0,#4d4db3 0,#4d4db30d 50%,#4d4db380 100%)",
       },
       boxShadow: {
-        darkGlow: '0 0 5px #a1c4fd, 0 0 10px #a1c4fd, 0 0 15px #c2e9fb, 0 0 20px #c2e9fb',
-        lightGlow: '0 0 5px #cfb1d1, 0 0 10px #cfb1d1, 0 0 15px #dcace0, 0 0 20px #dcace0',
+        darkGlow:
+          "0 0 5px #a1c4fd, 0 0 10px #a1c4fd, 0 0 15px #c2e9fb, 0 0 20px #c2e9fb",
+        lightGlow:
+          "0 0 5px #cfb1d1, 0 0 10px #cfb1d1, 0 0 15px #dcace0, 0 0 20px #dcace0",
       },
     },
   },

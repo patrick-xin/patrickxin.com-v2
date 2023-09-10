@@ -1,5 +1,5 @@
 /* eslint-disable */
-// @ts-nocheck 
+// @ts-nocheck
 
 import type { RefObject } from "react";
 import { useEffect, useRef } from "react";

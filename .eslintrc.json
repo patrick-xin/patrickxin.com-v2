@@ -57,10 +57,10 @@
         "@next/next/no-img-element": "off", // We currently not using next/image because it isn't supported with SSG mode
         "@typescript-eslint/comma-dangle": "off", // Avoid conflict rule between Eslint and Prettier
         "@typescript-eslint/consistent-type-imports": "error",
-        "no-promise-executor-return":"off",
-        "no-param-reassign":"off",
-        "no-nested-ternary":"off",
-         // Ensure `import type` is used when it's necessary
+        "no-promise-executor-return": "off",
+        "no-param-reassign": "off",
+        "no-nested-ternary": "off",
+        // Ensure `import type` is used when it's necessary
         "no-restricted-syntax": [
           "error",
           "ForInStatement",

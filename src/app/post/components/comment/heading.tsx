@@ -6,7 +6,10 @@ type CommentHeadingProps = {
 
 const CommentHeading = ({ text }: CommentHeadingProps) => {
   return (
-    <div className="font-heading text-xl tracking-wider md:text-2xl lg:text-3xl">
+    <div
+      id="comment"
+      className="font-heading text-xl tracking-wider md:text-2xl lg:text-3xl"
+    >
       {text}
     </div>
   );

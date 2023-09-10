@@ -21,7 +21,7 @@ const PostLikeStats = ({ slug }: { slug: string }) => {
           <HeartIcon className="h-4 w-4 text-red-600" />
         )}
       </Button>
-      <div className="text-xs lg:text-sm">{likes}</div>
+      <div className="font-heading text-xs lg:text-sm">{likes}</div>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import ScrollToTop from "@/components/scroll-to-top";
 import TocButton from "@/app/post/components/toc/button";
 import PostPageWrapper from "@/app/post/components/wrapper";
 import TocDrawer from "@/app/post/components/toc/drawer";
+import MobileNav from "@/components/nav/mobile-nav";
 import PostContent from "../components/mdx/body";
 import PostPageHeader from "../components/header";
 import PostFooter from "../components/footer";
@@ -82,6 +83,7 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
       </PostPageWrapper>
       <TocButton />
       {toc && <TocDrawer />}
+      <MobileNav />
     </>
   );
 };
