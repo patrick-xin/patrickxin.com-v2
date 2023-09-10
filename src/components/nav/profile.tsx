@@ -1,32 +1,43 @@
 "use client";
 
-import Image from "next/image";
-
+import Avatar from "boring-avatars";
 import type { Session } from "next-auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import SignOut from "./sign-out";
 
 const UserProfile = ({ session }: { session: Session }) => {
   const { user } = session;
   return (
-    <div className="flex items-center gap-2">
-      <div>
-        <Image
-          className="rounded-full"
-          src={user.image ?? ""}
-          alt="user-avatar"
-          height={36}
-          width={36}
-        />
-      </div>
-
-      {user.role === "VISTOR" ? (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
         <div>
-          <div className="text-sm">{user.email ?? null}</div>
-          <div className="text-sm">{user.name}</div>
-          <SignOut />
+          <Avatar size={30} name={user.name!} variant="beam" />
         </div>
-      ) : null}
-    </div>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel className="text-primary">
+          {user.name}
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          {user.email ? (
+            <DropdownMenuItem>{user.email}</DropdownMenuItem>
+          ) : null}
+
+          <DropdownMenuItem>
+            <SignOut />
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 

@@ -64,8 +64,10 @@ const MainNav = ({ fixed = false }) => {
               </Link>
             </li>
           </ul>
-          <div className="items-center lg:mt-1 lg:flex lg:gap-4">
-            <ThemeToggle />
+          <div className="mt-1 flex items-center lg:gap-6">
+            <div className="hidden lg:block">
+              <ThemeToggle />
+            </div>
 
             {data ? <UserProfile session={data} /> : null}
           </div>

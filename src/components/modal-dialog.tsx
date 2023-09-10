@@ -30,16 +30,16 @@ const ModalDialog = () => {
         onDismiss();
       }}
     >
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[400px]">
         <DialogHeader className="gap-8">
           <DialogTitle className="text-2xl">Sign in</DialogTitle>
           <DialogDescription>
-            Sign in to leave a comment! I&apos;ll get back to you soon,
+            Sign in to leave a comment! I&apos;ll get back to you in no time,
             rememeber to come back soon!
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex h-96 w-96 items-center justify-center">
+        <div className="mx-auto flex h-72 w-72 items-center justify-center lg:h-96 lg:w-96">
           <div className="mx-8 flex flex-col">
             <Button
               variant="outline"
