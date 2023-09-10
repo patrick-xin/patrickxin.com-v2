@@ -1,11 +1,12 @@
+import Link from "next/link";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import MainNav from "@/components/nav/main-nav";
 import { prisma } from "@/lib/db";
 import Footer from "@/components/footer";
+import GradiantLink from "@/components/gradiant-link";
 import Hero from "../components/homepage/hero";
 import Section from "../components/homepage/section";
-import Learn from "../components/homepage/learn";
-import Build from "../components/homepage/build";
-import Publish from "../components/homepage/publish";
+import PostTitle from "./post/components/header/title";
 
 const getPosts = async () => {
   const data = await prisma.post.findMany({
@@ -38,7 +39,31 @@ export default async function Home() {
               the things I'm curious about. I write about the things
               I'm learning."
       >
-        <Publish posts={posts} />
+        <div className="mx-auto max-w-2xl lg:mt-14">
+          <div className="my-4 w-full text-sm text-muted-foreground lg:text-lg">
+            Latest Posts
+          </div>
+          <div className="flex flex-col justify-center space-y-2 lg:space-y-6">
+            {posts.map((post) => (
+              <Link
+                href={`/post/${post.slug}`}
+                key={post.slug}
+                className="group inline-flex items-center justify-between decoration-primary/10 underline-offset-4 hover:underline"
+              >
+                <PostTitle
+                  className="text-left font-semibold text-primary/70 transition-all ease-linear group-hover:underline group-hover:underline-offset-2"
+                  title={post.title}
+                  size="sm"
+                  isGradient={false}
+                />
+                <ArrowTopRightIcon className="h-4 w-4 group-hover:text-primary" />
+              </Link>
+            ))}
+          </div>
+          <div className="mx-auto mt-8 flex justify-center lg:justify-start">
+            <GradiantLink href="/post" isActive name="All posts" center />
+          </div>
+        </div>
       </Section>
       <Section
         title="Learn"
@@ -48,18 +73,25 @@ export default async function Home() {
             to learn new skills. I'm always trying to learn new
             technologies. I'm always trying to learn new ways of thinking."
       >
-        <Learn />
+        <div className="mx-auto mt-8 flex justify-center">
+          <GradiantLink
+            href="/bookmark"
+            isActive
+            name="View collections"
+            center
+          />
+        </div>
       </Section>
-
       <Section
         title="Build"
         intro="I like to build things using code and technology."
         description="I like to build things using code and technology. I like to build
             things that are useful. I like to build things that are fun."
       >
-        <Build />
+        <div className="mx-auto mt-8 flex justify-center">
+          <GradiantLink href="/post" isActive name="View projects" center />
+        </div>
       </Section>
-
       <Footer />
     </div>
   );
