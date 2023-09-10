@@ -1,6 +1,6 @@
 import GradiantLink from "../gradiant-link";
 
-const Learn = () => {
+const LearnSection = () => {
   return (
     <div className="mx-auto mt-8 flex justify-center">
       <GradiantLink href="/bookmark" isActive name="View collections" center />
@@ -8,4 +8,4 @@ const Learn = () => {
   );
 };
 
-export default Learn;
+export default LearnSection;

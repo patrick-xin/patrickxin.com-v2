@@ -4,7 +4,11 @@ import Link from "next/link";
 import PostTitle from "@/app/post/components/header/title";
 import GradiantLink from "../gradiant-link";
 
-const Publish = ({ posts }: { posts: { title: string; slug: string }[] }) => {
+const PublishSection = ({
+  posts,
+}: {
+  posts: { title: string; slug: string }[];
+}) => {
   return (
     <div className="mx-auto max-w-2xl lg:mt-14">
       <div className="my-4 w-full text-sm text-muted-foreground lg:text-lg">
@@ -34,4 +38,4 @@ const Publish = ({ posts }: { posts: { title: string; slug: string }[] }) => {
   );
 };
 
-export default Publish;
+export default PublishSection;
