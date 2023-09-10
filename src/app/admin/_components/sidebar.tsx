@@ -17,7 +17,7 @@ export function Sidebar() {
   const segment = pathname.split("/")[2];
 
   return (
-    <div className="fixed left-0 top-32 w-[240px]">
+    <div className="fixed left-32 top-32 w-[240px]">
       <div className="px-3 py-2">
         <div className="space-y-4">
           <Button

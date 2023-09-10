@@ -9,8 +9,16 @@ const PostList = () => {
 
   return (
     <section className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 md:gap-8 lg:gap-12">
-      {posts.map((post) => (
-        <PostItem key={post.slug} post={post} />
+      {posts.map((post, index) => (
+        <PostItem
+          key={post.slug}
+          post={post}
+          noBorder={
+            (posts.length % 2 === 1 && index === posts.length - 1) ||
+            (posts.length % 2 === 0 &&
+              (index === posts.length - 1 || index === posts.length - 2))
+          }
+        />
       ))}
     </section>
   );

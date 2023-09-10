@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Post } from "contentlayer/generated";
+import { cn } from "@/lib/utils";
 import PublishTime from "./header/publish-time";
 import PostTitle from "./header/title";
 import PostThumbnail from "./header/thumbnail";
@@ -14,11 +15,18 @@ type Props = {
     | "publishedAt"
     | "readingTime"
   >;
+  noBorder: boolean;
 };
 
-const PostItem = async ({ post }: Props) => {
+const PostItem = async ({ post, noBorder }: Props) => {
   return (
-    <div className="w-full border-b border-border/20 py-4 lg:py-6">
+    <div
+      className={cn(
+        "w-full py-4 lg:py-6",
+        noBorder && "border-none",
+        !noBorder && "border-b border-border/20",
+      )}
+    >
       <Link href={`/post/${post.slug}`} className="group inline-block">
         <PublishTime
           className="text-xs dark:text-gray-400 lg:text-sm"
@@ -26,7 +34,7 @@ const PostItem = async ({ post }: Props) => {
         />
 
         <div className="mt-2 flex w-full justify-center">
-          <PostThumbnail src={post.thumbnail.url} hasInfo={false} />
+          <PostThumbnail src={post.thumbnail.url} hasInfo={false} size="sm" />
         </div>
 
         <div className="mt-4 space-y-4">

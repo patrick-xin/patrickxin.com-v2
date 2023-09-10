@@ -36,7 +36,7 @@ const ReplyDialog = ({
     const res = await fetch("/admin/api/comment", {
       method: "POST",
       body: JSON.stringify({
-        content,
+        content: reply,
         commentId,
         by: "Patrick Xin",
         to: username,

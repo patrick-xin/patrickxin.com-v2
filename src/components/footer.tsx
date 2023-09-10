@@ -4,37 +4,72 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="relative flex h-36 justify-center border-t border-border/20 text-xs dark:border-muted-foreground/30 lg:h-48  lg:text-sm">
-      <div className="flex w-full max-w-4xl flex-col justify-between lg:mt-6">
+      <div className="mt-6 flex w-full max-w-4xl flex-col justify-between">
         <div className="flex justify-around lg:mt-2">
           <div className="flex flex-col gap-1 md:gap-3">
             <div className="font-semibold">Navigation</div>
             <div>
-              <Link href="/">Home</Link>
+              <Link
+                href="/"
+                className="text-muted-foreground transition-colors ease-linear hover:text-primary"
+              >
+                Home
+              </Link>
             </div>
             <div>
-              <Link href="/about">About</Link>
+              <Link
+                href="/about"
+                className="text-muted-foreground transition-colors ease-linear hover:text-primary"
+              >
+                About
+              </Link>
             </div>
             <div>
-              <Link href="/post">Post</Link>
+              <Link
+                href="/post"
+                className="text-muted-foreground transition-colors ease-linear hover:text-primary"
+              >
+                Post
+              </Link>
             </div>
           </div>
 
           <div className="flex flex-col gap-1 md:gap-3">
             <div className="font-semibold">Contact</div>
             <div>
-              <a href="/newsletter">Twitter</a>
+              <a
+                href="/newsletter"
+                className="text-muted-foreground transition-colors ease-linear hover:text-primary"
+              >
+                Twitter
+              </a>
             </div>
             <div>
-              <a href="/newsletter">Github</a>
+              <a
+                href="/newsletter"
+                className="text-muted-foreground transition-colors ease-linear hover:text-primary"
+              >
+                Github
+              </a>
             </div>
           </div>
           <div className="flex flex-col gap-1 md:gap-3 lg:gap-4">
             <div className="font-semibold"> </div>
             <div>
-              <a href="/newsletter">RSS</a>
+              <a
+                href="/newsletter"
+                className="text-muted-foreground transition-colors ease-linear hover:text-primary"
+              >
+                RSS
+              </a>
             </div>
             <div>
-              <Link href="/newsletter">News Letter</Link>
+              <Link
+                href="/newsletter"
+                className="text-muted-foreground transition-colors ease-linear hover:text-primary"
+              >
+                News Letter
+              </Link>
             </div>
           </div>
         </div>

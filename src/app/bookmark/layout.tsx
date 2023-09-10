@@ -1,4 +1,5 @@
 import MainNav from "@/components/nav/main-nav";
+import Footer from "@/components/footer";
 import BookmarkSidebar from "./_components/sidebar";
 
 export default function BookmarkLayout({
@@ -13,6 +14,7 @@ export default function BookmarkLayout({
         <BookmarkSidebar />
         {children}
       </div>
+      <Footer />
     </>
   );
 }

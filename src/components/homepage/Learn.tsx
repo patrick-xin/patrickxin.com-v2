@@ -2,7 +2,7 @@ import GradiantLink from "../gradiant-link";
 
 const Learn = () => {
   return (
-    <div className="mt-8">
+    <div className="mx-auto mt-8 flex justify-center">
       <GradiantLink href="/bookmark" isActive name="View collections" center />
     </div>
   );

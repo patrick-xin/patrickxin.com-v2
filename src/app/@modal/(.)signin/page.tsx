@@ -1,13 +1,7 @@
-import React from "react";
-import { DialogDemo } from "@/components/modal-dialog";
+import DialogModal from "@/components/modal-dialog";
 
 const Page = () => {
-  return (
-    // <Modal>
-    //   <SignInPopover />
-    // </Modal>
-    <DialogDemo />
-  );
+  return <DialogModal />;
 };
 
 export default Page;

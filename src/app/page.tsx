@@ -4,8 +4,8 @@ import Footer from "@/components/footer";
 import Hero from "@/components/homepage/hero";
 import Section from "@/components/homepage/section";
 import Publish from "@/components/homepage/publish";
-import Learn from "@/components/homepage/Learn";
-import Build from "@/components/homepage/Build";
+import Learn from "@/components/homepage/learn";
+import Build from "@/components/homepage/build";
 
 const getPosts = async () => {
   const data = await prisma.post.findMany({

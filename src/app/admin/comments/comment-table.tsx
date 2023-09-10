@@ -13,6 +13,7 @@ type Props = { comments: CommentWithUser[] };
 
 const CommentTableBody = ({ comments }: Props) => {
   const [selected, setSelected] = useState("");
+  const [selectedDelete, setSelectedDelete] = useState("");
   const [c, setC] = useState(comments);
   const handleResetComments = (commentId: string) => {
     setC(() => c.filter((item) => item.id !== commentId));
@@ -41,7 +42,7 @@ const CommentTableBody = ({ comments }: Props) => {
             <Button
               size="sm"
               variant="destructive"
-              onClick={() => setSelected(comment.id)}
+              onClick={() => setSelectedDelete(comment.id)}
             >
               Delete
             </Button>
@@ -60,8 +61,8 @@ const CommentTableBody = ({ comments }: Props) => {
           <DeleteAlert
             content={comment.content}
             commentId={comment.id}
-            open={comment.id === selected}
-            onChange={() => setSelected("")}
+            open={comment.id === selectedDelete}
+            onChange={() => setSelectedDelete("")}
             handleResetComments={handleResetComments}
           />
           <ReplyDialog

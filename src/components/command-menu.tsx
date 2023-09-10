@@ -152,18 +152,18 @@ export function CommandMenu({ ...props }: DialogProps) {
               className="group"
               onSelect={() => runCommand(() => setTheme("light"))}
             >
-              <SunIcon className="mr-2 h-4 w-4 transition-colors ease-linear group-hover:text-orange-500" />
+              <SunIcon className="mr-2 h-2 w-2 transition-colors ease-linear group-hover:text-orange-500" />
               Light
             </CommandItem>
             <CommandItem
               className="group"
               onSelect={() => runCommand(() => setTheme("dark"))}
             >
-              <MoonIcon className="mr-2 h-4 w-4 transition-colors ease-linear group-hover:text-indigo-500" />
+              <MoonIcon className="mr-2 h-2 w-2 transition-colors ease-linear group-hover:text-indigo-500" />
               Dark
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
-              <LaptopIcon className="mr-2 h-4 w-4" />
+              <LaptopIcon className="mr-2 h-2 w-2" />
               System
             </CommandItem>
           </CommandGroup>

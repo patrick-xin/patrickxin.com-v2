@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import useStore from "@/store";
+import Footer from "@/components/footer";
 
 type PostPageWraperProps = {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ const PostPageWrapper = ({ children }: PostPageWraperProps) => {
       transition={{ type: "tween" }}
     >
       {children}
+      <Footer />
     </motion.div>
   );
 };

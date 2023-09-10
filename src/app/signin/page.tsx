@@ -44,15 +44,6 @@ const Page = () => {
                 >
                   Sign in with Github
                 </Button>
-                <Button
-                  className="my-2"
-                  variant="outline"
-                  onClick={() =>
-                    signIn("google", { callbackUrl: search || "/" })
-                  }
-                >
-                  Sign in with Google
-                </Button>
               </div>
             </div>
           </Suspense>

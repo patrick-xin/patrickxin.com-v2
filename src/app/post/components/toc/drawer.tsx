@@ -3,13 +3,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Cross1Icon } from "@radix-ui/react-icons";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 import useStore from "@/store";
 import TableOfContent from "./content";
 
 const TocDrawer = () => {
   const showTOC = useStore((state) => state.showTOC);
   const toggle = useStore((state) => state.toggle);
-
+  const pathname = usePathname();
+  useEffect(() => {
+    console.log(pathname);
+  }, [pathname]);
   return (
     <AnimatePresence>
       {showTOC && (

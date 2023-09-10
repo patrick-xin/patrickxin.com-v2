@@ -52,7 +52,11 @@ const Page = ({ params }: PageProps) => {
       </div>
       <div className="mt-28 lg:mt-0">
         {contents.map((content, index) => (
-          <BookmarkItem key={index} {...content} />
+          <BookmarkItem
+            key={index}
+            {...content}
+            noBorder={index + 1 === contents.length}
+          />
         ))}
       </div>
     </div>

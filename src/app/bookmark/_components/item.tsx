@@ -2,6 +2,7 @@ import { Link1Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import React from "react";
 import type { IBookmarkItem } from "@/types";
+import { cn } from "@/lib/utils";
 
 const BookmarkItem = ({
   path,
@@ -9,9 +10,13 @@ const BookmarkItem = ({
   href,
   title,
   description,
-}: IBookmarkItem) => {
+  noBorder = false,
+}: IBookmarkItem & { noBorder: boolean }) => {
   return (
-    <div key={path} className="border-b border-border/10">
+    <div
+      key={path}
+      className={cn("border-b border-border/10", noBorder && "border-none")}
+    >
       <div className="flex gap-4 p-4">
         <div>
           <Image

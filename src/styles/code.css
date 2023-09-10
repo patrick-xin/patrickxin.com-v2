@@ -168,7 +168,7 @@ pre[class*='language-'] {
 }
 
 .code-line {
-  @apply block px-5 -mx-[13px] py-1 hover:bg-primary/10 transition-colors ease-linear;
+  @apply block px-5 -mx-[13px] lg:-mx-0 py-1 hover:bg-primary/10 transition-colors ease-linear;
 }
 
 .code-line.inserted {
@@ -184,11 +184,11 @@ pre[class*='language-'] {
 }
 
 .highlight-line {
-  @apply bg-primary/5 min-w-max border-l-rose-400 dark:border-l-teal-600 md:border-l-4;
+  @apply bg-primary/5 min-w-max;
 }
 
 .line-number::before {
-  @apply md:inline-block w-4 text-right mr-5 hidden -ml-2 text-gray-400;
+  @apply md:inline-block text-xs w-4 text-right mr-5 hidden -ml-3 text-gray-400;
   content: attr(line);
 }
 

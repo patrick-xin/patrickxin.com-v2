@@ -4,18 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import UserProfile from "./profile";
 
 const MainNav = ({ fixed = false }) => {
   const { data } = useSession();
+  const path = usePathname();
+
   return (
     <nav
       className={cn(
-        "mx-auto flex h-full w-full items-center px-6 ",
+        "mx-auto flex h-full w-full items-center px-6",
         fixed
-          ? "fixed inset-0 h-[80px] lg:h-16 z-50 backdrop-filter backdrop-blur-lg"
+          ? "fixed inset-0 h-[80px] z-50 backdrop-filter backdrop-blur-lg"
           : "relative",
       )}
     >
@@ -28,7 +31,10 @@ const MainNav = ({ fixed = false }) => {
             <li>
               <Link
                 href="/"
-                className="inline-block transition-colors ease-linear hover:text-primary"
+                className={cn(
+                  "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4",
+                  path === "/" && "underline underline-offset-4 text-primary",
+                )}
               >
                 Home
               </Link>
@@ -36,7 +42,11 @@ const MainNav = ({ fixed = false }) => {
             <li>
               <Link
                 href="/post"
-                className="inline-block transition-colors ease-linear hover:text-primary"
+                className={cn(
+                  "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4",
+                  path === "/post" &&
+                    "underline underline-offset-4 text-primary",
+                )}
               >
                 Post
               </Link>
@@ -44,7 +54,11 @@ const MainNav = ({ fixed = false }) => {
             <li>
               <Link
                 href="/bookmark/web"
-                className="inline-block transition-colors ease-linear hover:text-primary"
+                className={cn(
+                  "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4",
+                  path.split("/")[1] === "bookmark" &&
+                    "underline underline-offset-4 text-primary",
+                )}
               >
                 Bookmark
               </Link>

@@ -7,7 +7,7 @@ type State = {
 
 const useStore = create<State>((set) => ({
   showTOC: false,
-
   toggle: () => set((state) => ({ showTOC: !state.showTOC })),
 }));
+
 export default useStore;

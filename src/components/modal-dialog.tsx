@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-export function DialogDemo() {
+const ModalDialog = () => {
   const [open, setOpen] = useState(true);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -33,7 +33,6 @@ export function DialogDemo() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader className="gap-8">
           <DialogTitle className="text-2xl">Sign in</DialogTitle>
-
           <DialogDescription>
             Sign in to leave a comment! I&apos;ll get back to you soon,
             rememeber to come back soon!
@@ -50,16 +49,11 @@ export function DialogDemo() {
               <GitHubLogoIcon className="mr-2 h-4 w-4" />
               Sign in with Github
             </Button>
-            <Button
-              className="my-2"
-              variant="outline"
-              onClick={() => signIn("google", { callbackUrl: search || "/" })}
-            >
-              Sign in with Google
-            </Button>
           </div>
         </div>
       </DialogContent>
     </Dialog>
   );
-}
+};
+
+export default ModalDialog;
