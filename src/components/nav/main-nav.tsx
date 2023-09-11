@@ -32,8 +32,9 @@ const MainNav = ({ fixed = false }) => {
               <Link
                 href="/"
                 className={cn(
-                  "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4",
-                  path === "/" && "underline underline-offset-4 text-primary",
+                  "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4 decoration-4",
+                  path === "/" &&
+                    "underline underline-offset-4 text-primary decoration-4",
                 )}
               >
                 Home
@@ -43,9 +44,9 @@ const MainNav = ({ fixed = false }) => {
               <Link
                 href="/post"
                 className={cn(
-                  "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4",
+                  "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4 decoration-4",
                   path === "/post" &&
-                    "underline underline-offset-4 text-primary",
+                    "underline underline-offset-4 decoration-4 text-primary",
                 )}
               >
                 Post
@@ -55,7 +56,7 @@ const MainNav = ({ fixed = false }) => {
               <Link
                 href="/bookmark/web"
                 className={cn(
-                  "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4",
+                  "inline-block decoration-primary decoration-4 transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4",
                   path.split("/")[1] === "bookmark" &&
                     "underline underline-offset-4 text-primary",
                 )}

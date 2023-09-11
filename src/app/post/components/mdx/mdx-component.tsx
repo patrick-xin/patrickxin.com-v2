@@ -22,7 +22,7 @@ const MDXComponents = {
       return (
         // eslint-disable-next-line jsx-a11y/anchor-has-content
         <a
-          className="relative inline-block font-medium underline underline-offset-4 transition-colors ease-linear"
+          className="relative inline-block font-medium text-primary underline underline-offset-4 transition-colors ease-linear"
           target="_blank"
           rel="noopener noreferrer"
           {...props}
@@ -99,14 +99,14 @@ const MDXComponents = {
   },
   ul: ({ ...props }) => (
     <ul
-      className="my-6 list-inside list-disc space-y-2 text-sm font-medium italic
-       leading-8 md:my-6 md:ml-4 md:pl-8 lg:space-y-3 lg:leading-9"
+      className="my-6 list-inside list-disc space-y-2 text-sm font-medium leading-8
+       md:my-6 md:ml-4 md:pl-8 lg:space-y-3 lg:text-base lg:leading-9"
       {...props}
     />
   ),
   ol: ({ ...props }) => (
     <ol
-      className="list-inside list-decimal space-y-2 p-2 text-sm font-medium italic leading-6 md:my-4 md:p-4 md:pl-10 md:leading-7 lg:my-6 lg:space-y-3 lg:text-lg lg:leading-9"
+      className="list-inside list-decimal space-y-2 p-2 text-sm font-medium leading-6 md:my-4 md:p-4 md:pl-10 md:leading-7 lg:my-6 lg:space-y-3 lg:text-base lg:leading-9"
       {...props}
     />
   ),

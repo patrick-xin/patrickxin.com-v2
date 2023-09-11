@@ -1,5 +1,7 @@
 import React from "react";
 import type { Bookmarks, BookmarkCategory, IBookmarkItem } from "@/types";
+import { absoluteUrl } from "@/lib/utils";
+import { siteConfig } from "@/config/site";
 import { BOOKMARKS, BOOKMARKS_AI, BOOKMARKS_WEB } from "../../data";
 import BookmarkItem from "../../_components/item";
 
@@ -8,7 +10,33 @@ export const generateStaticParams = () =>
     category: bookmark.category,
     slug: [bookmark.slug],
   }));
-
+export const generateMetadata = ({
+  params,
+}: {
+  params: { slug: string; category: string };
+}) => {
+  const category = Object.keys(BOOKMARKS).find((b) => b === params.category);
+  if (!category) {
+    return {};
+  }
+  return {
+    title: `${category} bookmarks`,
+    description: `A collection of ${category} bookmarks`,
+    openGraph: {
+      title: category,
+      description: `A collection of ${category} bookmarks`,
+      type: "article",
+      url: absoluteUrl(`/category/${category}`),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: category,
+      description: `${category} bookmarks}`,
+      images: [siteConfig.assets.ogImage],
+      creator: "@alpesdream",
+    },
+  };
+};
 interface PageProps {
   params: {
     category: keyof Bookmarks;

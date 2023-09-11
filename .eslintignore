@@ -3,3 +3,4 @@ out
 prettier.config.mjs
 src/components/ui*
 tailwind.config.js
+.contentlayer

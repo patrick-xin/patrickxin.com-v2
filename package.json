@@ -1,7 +1,19 @@
 {
   "name": "patrickxin.com",
-  "version": "0.1.0",
-  "private": true,
+  "description": "Personal website of Patrick Xin",
+  "author": {
+    "email": "patrick.xin.dev@gmail.com",
+    "name": "Patrick Xin",
+    "url": "https://patrickxin.com/"
+  },
+  "homepage": "https://patrickxin.com/",
+  "keywords": [
+    "tailwindcss",
+    "react",
+    "nextjs",
+    "portfolio",
+    "personal-site"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +22,7 @@
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
-    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore .contentlayer",
     "prepare": "husky install",
     "postinstall": "prisma generate"
   },

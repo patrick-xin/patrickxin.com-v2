@@ -22,7 +22,7 @@ const TocDrawer = () => {
           }}
           transition={{ type: "tween", duration: 0.3 }}
           className="relative left-0 top-0 z-100 hidden h-screen w-[60vw] flex-col overflow-y-scroll border-r border-border/20 bg-background px-6
-      shadow-md md:block md:w-[40vw] lg:fixed lg:w-[24vw] lg:px-12"
+      shadow-md md:block md:w-[40vw] lg:fixed lg:w-[24rem] lg:px-6"
         >
           <motion.div
             className="relative mt-4 flex justify-end px-6"

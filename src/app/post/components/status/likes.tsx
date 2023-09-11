@@ -10,7 +10,7 @@ const PostLikeStats = ({ slug }: { slug: string }) => {
     <div className="flex items-center gap-1">
       <Button
         disabled={isLiked || isLoading}
-        variant="ghost"
+        variant="secondary"
         onClick={handleLike}
         className={cn("relative", { "cursor-not-allowed": false })}
         size="icon"

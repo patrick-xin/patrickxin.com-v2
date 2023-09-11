@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { allPosts } from "contentlayer/generated";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,7 +24,7 @@ export const capitalizeFirstLetter = (string: string) => {
 };
 
 export function absoluteUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
+  return `${process.env.SITE_URL}${path}`;
 }
 
 export function getRandomColor(): string {
@@ -88,3 +89,28 @@ export const copyToClipboard = (text: string) => {
     }
   });
 };
+
+export const getAdjacentPosts = (slug: string) => {
+  const postIndex = Math.abs(allPosts.findIndex((post) => post?.slug === slug));
+  return {
+    previous:
+      postIndex <= 0
+        ? null
+        : {
+            slug: allPosts[postIndex - 1].slug,
+            title: allPosts[postIndex - 1].title,
+          },
+    next:
+      postIndex >= allPosts.length - 1
+        ? null
+        : {
+            slug: allPosts[postIndex + 1].slug,
+            title: allPosts[postIndex + 1].title,
+          },
+  };
+};
+
+export const getMostRecentPost = () =>
+  allPosts.sort(
+    (a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
+  )[0];

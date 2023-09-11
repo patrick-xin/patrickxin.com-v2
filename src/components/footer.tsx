@@ -57,7 +57,8 @@ const Footer = () => {
             <div className="font-semibold"> </div>
             <div>
               <a
-                href="/newsletter"
+                target="_blank"
+                href={`${process.env.SITE_URL}sitemap.xml`}
                 className="text-muted-foreground transition-colors ease-linear hover:text-primary"
               >
                 RSS

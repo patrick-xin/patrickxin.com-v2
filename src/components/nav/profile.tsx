@@ -18,7 +18,7 @@ const UserProfile = ({ session }: { session: Session }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div>
+        <div className="cursor-pointer">
           <Avatar size={30} name={user.name!} variant="beam" />
         </div>
       </DropdownMenuTrigger>

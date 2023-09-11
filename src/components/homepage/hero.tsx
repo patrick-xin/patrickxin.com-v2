@@ -2,9 +2,9 @@ import GlowingDots from "../glowing-dots";
 
 const Hero = () => {
   return (
-    <div className="relative mx-auto flex h-[70vh] w-full flex-col justify-center lg:h-screen">
+    <div className="relative mx-auto flex h-[60vh] w-full flex-col justify-center lg:h-screen">
       <GlowingDots />
-      <div className="relative mx-auto -mt-12">
+      <div className="relative mx-auto">
         <div className="text-xl font-medium">
           <div className="relative overflow-hidden text-start font-code text-sm">
             <div className="relative inline-block">Hello</div>{" "}
@@ -56,6 +56,11 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <p className="mx-auto mt-6 max-w-3xl text-muted-foreground lg:mt-12">
+        I am a passionate Software Engineer, specialised in front-end
+        development using React and TypeScript. I love creating beautiful
+        websites and interesting web apps.
+      </p>
     </div>
   );
 };

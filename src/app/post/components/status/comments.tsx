@@ -10,11 +10,11 @@ const PostCommentStats = ({ slug }: { slug: string }) => {
     <div className="flex items-center gap-1">
       <Button
         onClick={() => router.push(`/post/${slug}#comment`)}
-        variant="ghost"
+        variant="secondary"
         size="icon"
         className="cursor-default"
       >
-        <ChatBubbleIcon className="h-4 w-4 text-green-500" />
+        <ChatBubbleIcon className="h-4 w-4 cursor-pointer text-green-500" />
       </Button>
       <div className="font-heading text-xs lg:text-sm">{commentsCount}</div>
     </div>

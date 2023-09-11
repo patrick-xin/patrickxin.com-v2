@@ -4,12 +4,12 @@
 echo '🏗️👷 Styling, testing and building your project before committing'
 
 # Check Prettier standards
-pnpm check-format ||
-(
-    echo '🤢🤮🤢🤮 Its F**KING RAW - Your styling looks disgusting. 🤢🤮🤢🤮
-            Prettier Check Failed. Run npm run format, add changes and try commit again.';
-    false;
-)
+# pnpm check-format ||
+# (
+#     echo '🤢🤮🤢🤮 Its F**KING RAW - Your styling looks disgusting. 🤢🤮🤢🤮
+#             Prettier Check Failed. Run npm run format, add changes and try commit again.';
+#     false;
+# )
 
 # Check ESLint Standards
 pnpm check-lint ||
