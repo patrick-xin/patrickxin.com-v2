@@ -46,12 +46,13 @@ const useDebouncedSearch = ({
       slug: post.slug,
     }));
     setPosts(data);
-    setLoading(false); // Set loading to false after fetch is complete.
+    setLoading(false);
   };
   useEffect(() => {
     if (debouncedSearch) {
       fetchPosts();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch]);
 
   const doesInputMatchAnyTitle = (input: string) => {

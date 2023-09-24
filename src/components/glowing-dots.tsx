@@ -61,6 +61,7 @@ const GlowingDots: React.FC = () => {
     const id = setInterval(randomizeGlow, 4000);
     setIntervalId(id);
     return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleMouseMove = (
@@ -83,7 +84,7 @@ const GlowingDots: React.FC = () => {
       );
 
       if (distance <= threshold) {
-        return "high"; // Set a consistent glow state for dots within the threshold
+        return "high";
       }
       return "off";
     });
@@ -96,10 +97,9 @@ const GlowingDots: React.FC = () => {
   ) => {
     if (intervalId) clearInterval(intervalId);
 
-    // Use a setTimeout to allow the browser to update event properties
     setTimeout(() => {
       handleMouseMove(event);
-    }, 10); // A small delay should suffice
+    }, 10);
   };
 
   const handleMouseLeave = () => {
