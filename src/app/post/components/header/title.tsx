@@ -14,7 +14,7 @@ const PostTitle = ({
   className,
 }: PostTitleProps) => {
   return (
-    <h1
+    <div
       className={cn("capitalize font-heading tracking-normal", `${className}`, {
         "text-3xl py-4 font-black md:text-5xl xl:leading-14": size === "lg",
         "text-2xl font-bold lg:font-black xl:text-3xl": size === "md",
@@ -23,7 +23,7 @@ const PostTitle = ({
       })}
     >
       {title}
-    </h1>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import useStore from "@/store";
+import { useTOCStore } from "@/store/toc";
 import Footer from "@/components/footer";
 
 type PostPageWraperProps = {
@@ -9,13 +9,13 @@ type PostPageWraperProps = {
 };
 
 const PostPageWrapper = ({ children }: PostPageWraperProps) => {
-  const showTOC = useStore((state) => state.showTOC);
+  const showTOC = useTOCStore((state) => state.showTOC);
 
   return (
     <motion.div
       initial={{ marginLeft: 0 }}
       animate={{
-        marginLeft: showTOC ? "24rem" : 0,
+        marginLeft: showTOC ? "20rem" : 0,
       }}
       className="relative"
       transition={{ type: "tween" }}

@@ -1,6 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import type { ParsedEvent, ReconnectInterval } from "eventsource-parser";
 import { allPosts } from "contentlayer/generated";
+import { mockStreamData } from "@/mock/stream";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -114,3 +116,56 @@ export const getMostRecentPost = () =>
   allPosts.sort(
     (a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
   )[0];
+
+export const OpenAIMockStream = async () => {
+  const encoder = new TextEncoder();
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      function onParse(event: ParsedEvent | ReconnectInterval) {
+        if (event.type === "event") {
+          const { data } = event;
+          const lines = data.split("\n").map((line) => line.trim());
+
+          for (const line of lines) {
+            if (line === "[DONE]") {
+              controller.close();
+              return;
+            }
+            let token;
+            try {
+              token = JSON.parse(line).choices[0].delta.content;
+              const queue = encoder.encode(token);
+              controller.enqueue(queue);
+            } catch (error) {
+              controller.error(error);
+              controller.close();
+            }
+          }
+        }
+      }
+
+      async function sendMockMessages() {
+        // Simulate delay
+        await new Promise((resolve) => setTimeout(resolve, 3200));
+
+        for (const message of mockStreamData) {
+          // eslint-disable-next-line no-await-in-loop
+          await new Promise((resolve) => setTimeout(resolve, 35));
+          const event: {
+            type: "event";
+            data: string;
+          } = { type: "event", data: message };
+
+          onParse(event);
+        }
+      }
+
+      sendMockMessages().catch((error) => {
+        controller.error(error);
+      });
+    },
+  });
+
+  return stream;
+};

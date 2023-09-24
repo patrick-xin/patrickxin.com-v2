@@ -94,7 +94,7 @@ const CommentForm = ({ slug }: { slug: string }) => {
               </Button>
             ) : (
               <div className="group relative mt-2">
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" className="text-zinc-100 hover:text-zinc-50">
                   <div>
                     <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-l from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-70 blur-md transition-all duration-200 group-hover:scale-110" />
                     <Link

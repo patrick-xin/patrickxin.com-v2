@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
 
 import PostHeader from "@/app/post/components/header/index";
@@ -64,12 +65,23 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
     slug,
     tags,
     toc,
+    image,
   } = post;
+
   return (
     <>
       <PostPageWrapper>
         <PostPageHeader category={category} title={title} />
         <div className="mx-auto mt-6 max-w-2xl lg:mt-0">
+          <div className="fixed inset-0 -z-10 h-full min-h-screen w-full opacity-10">
+            <Image
+              src={image}
+              priority
+              fill
+              className="h-full bg-blend-multiply"
+              alt="bg-image"
+            />
+          </div>
           <PostHeader
             category={category}
             description={description}

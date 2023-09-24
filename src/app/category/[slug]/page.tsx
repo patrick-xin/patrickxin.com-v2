@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
 import Category from "@/components/category";
 import MovingHeader from "@/components/nav/moving-header";
@@ -7,6 +8,8 @@ import Footer from "@/components/footer";
 import { BOOKMARKS } from "@/app/bookmark/data";
 import { absoluteUrl } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
+import PageWrapper from "@/components/page-wrapper";
+import bg from "../../../../public/assets/images/bg-bookmark.jpg";
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post.category }));
@@ -41,10 +44,16 @@ const Page = ({ params }: { params: { slug: string } }) => {
   });
 
   return (
-    <>
+    <PageWrapper>
       <MovingHeader count={320} />
-
-      <div className="mx-auto my-4 max-w-5xl md:my-6 lg:mb-24 lg:mt-12">
+      <Image
+        src={bg}
+        fill
+        priority
+        className="dakr:opacity-5 fixed inset-0 -top-24 -z-10 opacity-20 bg-blend-hue"
+        alt="background-image"
+      />
+      <div className="mx-auto my-4 max-w-4xl md:my-6 lg:mb-24 lg:mt-12">
         <Category />
         <section className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 md:gap-8 lg:gap-12">
           {posts.map((post, index) => (
@@ -61,7 +70,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
         </section>
       </div>
       <Footer />
-    </>
+    </PageWrapper>
   );
 };
 

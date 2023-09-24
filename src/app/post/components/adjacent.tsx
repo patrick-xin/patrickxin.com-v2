@@ -23,7 +23,7 @@ const NavLink = ({ slug, title, isRight }: PostNavLinkProps) => {
       <Link
         href={`/post/${slug}`}
         className={cn(
-          "text-sm lg:text-2xl group-hover:underline underline-offset-4 group-hover:text-primary decoration-primary/50",
+          "group-hover:underline neon underline-offset-4 decoration-primary/50",
         )}
       >
         {title}

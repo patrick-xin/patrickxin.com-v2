@@ -1,16 +1,21 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
-import { copyToClipboard } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { copyToClipboard } from "@/lib/utils";
 
 type PreProps = {
-  children?: React.ReactNode;
+  children?: React.ReactNode & {
+    props?: {
+      raw?: string;
+    };
+  };
 };
 
 const Pre = ({ children, ...props }: PreProps) => {
+  const raw = children?.props?.raw;
   const duration = 0.4;
   const svgVariants = {
     hover: (isChecked: boolean) => ({
@@ -36,11 +41,10 @@ const Pre = ({ children, ...props }: PreProps) => {
   const pathLength = useMotionValue(0);
   const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1]);
   const [copied, setCopied] = useState(false);
-  const preRef = useRef<HTMLPreElement | null>(null);
-  const onClick = () => {
-    if (preRef.current) {
-      copyToClipboard(preRef.current.innerText.trim());
 
+  const onClick = () => {
+    if (raw) {
+      copyToClipboard(raw);
       setCopied(true);
     }
   };
@@ -51,17 +55,17 @@ const Pre = ({ children, ...props }: PreProps) => {
   }, [copied]);
 
   return (
-    <pre {...props} ref={preRef} className="relative -mx-4 py-4 md:-mx-0">
+    <pre {...props} className="relative">
       <div className="absolute -top-0.5 right-0 hidden items-center space-x-2 lg:flex">
         <Button
+          size="icon"
           variant="ghost"
-          className="bg-transparent hover:bg-transparent"
+          // className="bg-transparent hover:bg-transparent"
           onClick={onClick}
         >
           <motion.svg
             initial="idle"
             whileHover="hover"
-            whileTap="pressed"
             transition={{ duration }}
             variants={svgVariants}
             custom={copied}

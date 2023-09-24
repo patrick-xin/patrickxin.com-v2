@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import UserProfile from "./profile";
+import { CommandMenu } from "../command/command-menu";
 
 const MainNav = ({ fixed = false }) => {
   const { data } = useSession();
@@ -66,8 +67,9 @@ const MainNav = ({ fixed = false }) => {
             </li>
           </ul>
           <div className="mt-1 flex items-center lg:gap-6">
-            <div className="hidden lg:block">
+            <div className="flex items-center gap-4">
               <ThemeToggle />
+              <CommandMenu />
             </div>
 
             {data ? <UserProfile session={data} /> : null}

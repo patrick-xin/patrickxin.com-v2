@@ -1,12 +1,12 @@
 :not(pre) > code {
-  @apply px-[0.2rem] py-[0.3rem] rounded whitespace-normal;
+  @apply px-[0.2rem] py-[0.1rem] rounded whitespace-normal;
 }
 :not(pre) > code[class*='language-'] {
   @apply rounded p-0.5;
 }
 
 pre[class*='language-'] {
-  @apply overflow-auto relative my-2 -mx-1 md:-mx-0 py-6 px-4;
+  @apply overflow-auto relative;
 }
 
 .language-css > code,
@@ -168,7 +168,7 @@ pre[class*='language-'] {
 }
 
 .code-line {
-  @apply block px-5 -mx-[13px] lg:-mx-0 py-1 hover:bg-primary/10 transition-colors ease-linear;
+  @apply block px-5 -mx-[2px] lg:-mx-0 py-1 hover:bg-primary/10 transition-colors ease-linear;
 }
 
 .code-line.inserted {
@@ -184,15 +184,15 @@ pre[class*='language-'] {
 }
 
 .highlight-line {
-  @apply bg-primary/5 min-w-max;
+  @apply bg-primary/5 min-w-max border-l border-primary;
 }
 
 .line-number::before {
-  @apply md:inline-block text-xs w-4 text-right mr-5 hidden -ml-3 text-gray-400;
+  @apply inline-block text-xs w-4 text-right mr-5 -ml-0 md:-ml-3 text-gray-400;
   content: attr(line);
 }
 
-.rehype-code-title {
-  @apply dark:bg-[#24283b] -mx-4 md:-mx-0 font-code relative bg-[#F9FAFB] text-[#e59500] p-2 lg:pl-6 rounded-xl rounded-b-none border-[#4dcead]/20 border-b text-sm;
+.rehype-code-title{
+  @apply bg-indigo-300/10 dark:bg-[#232651]/40 -mx-4 md:-mx-0 font-code relative p-2 rounded-xl rounded-b-none border-indigo-600/40 border-b text-sm;
 }
 

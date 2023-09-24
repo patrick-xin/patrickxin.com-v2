@@ -71,9 +71,7 @@ const MDXComponents = {
     );
   },
   p: ({ ...props }) => {
-    return (
-      <p {...props} className="my-6 leading-8 md:leading-10 lg:my-8 xl:my-10" />
-    );
+    return <p {...props} className="my-6 leading-8 lg:my-8" />;
   },
   em: ({ ...props }) => {
     return <em {...props} className="italic" />;
@@ -84,7 +82,7 @@ const MDXComponents = {
   blockquote: ({ ...props }) => {
     return (
       <div
-        className="relative mx-auto my-4 flex rounded-lg bg-gray-50 p-2 font-quote font-semibold dark:bg-white/5 lg:my-12 lg:text-xl
+        className="relative mx-auto my-4 flex rounded-lg bg-gray-50 p-2 font-code tracking-wide dark:bg-white/5 lg:my-12
 "
       >
         <div>
@@ -111,6 +109,37 @@ const MDXComponents = {
     />
   ),
   pre: Pre,
+  table: ({ ...props }) => (
+    <table
+      className="my-6 w-full caption-bottom border-collapse overflow-hidden border border-border/20 text-sm"
+      {...props}
+    />
+  ),
+  thead: ({ ...props }) => <thead {...props} className="[&_tr]:border-b" />,
+  tbody: ({ ...props }) => (
+    <tbody
+      {...props}
+      className="[&>*:nth-child(odd)]:bg-primary/5 [&_tr:last-child]:border-0"
+    />
+  ),
+  tr: ({ ...props }) => (
+    <tr
+      {...props}
+      className="border-t border-border/20 data-[state=selected]:bg-muted"
+    />
+  ),
+  th: ({ ...props }) => (
+    <th
+      {...props}
+      className="h-10 w-auto border border-border/20 px-2 text-center align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    />
+  ),
+  td: ({ ...props }) => (
+    <td
+      {...props}
+      className="border border-border/20 p-3 align-middle leading-loose [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    />
+  ),
 };
 
 export default MDXComponents;

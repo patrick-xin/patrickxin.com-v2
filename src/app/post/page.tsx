@@ -1,11 +1,14 @@
 import React from "react";
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import PostList from "@/app/post/components/list";
 import Category from "@/components/category";
 import MovingHeader from "@/components/nav/moving-header";
 import Footer from "@/components/footer";
 import { siteConfig } from "@/config/site";
+import PageWrapper from "@/components/page-wrapper";
+import bg from "../../../public/assets/images/bg-post.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.SITE_URL}`),
@@ -41,14 +44,21 @@ export const metadata: Metadata = {
 
 const AllBlogsPage = () => {
   return (
-    <>
+    <PageWrapper>
       <MovingHeader count={320} />
+      <Image
+        src={bg}
+        fill
+        priority
+        className="dakr:opacity-5 fixed inset-0 -top-24 -z-10 opacity-20 bg-blend-darken"
+        alt="background-image"
+      />
       <div className="mx-auto my-4 max-w-4xl md:my-6 lg:mb-24 lg:mt-12">
         <Category />
         <PostList />
       </div>
       <Footer />
-    </>
+    </PageWrapper>
   );
 };
 

@@ -3,12 +3,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Cross1Icon } from "@radix-ui/react-icons";
-import useStore from "@/store";
+import { useTOCStore } from "@/store/toc";
 import TableOfContent from "./content";
 
 const TocDrawer = () => {
-  const showTOC = useStore((state) => state.showTOC);
-  const toggle = useStore((state) => state.toggle);
+  const showTOC = useTOCStore((state) => state.showTOC);
+  const toggle = useTOCStore((state) => state.toggle);
 
   return (
     <AnimatePresence>
@@ -21,11 +21,11 @@ const TocDrawer = () => {
             transition: { duration: 0.4 },
           }}
           transition={{ type: "tween", duration: 0.3 }}
-          className="relative left-0 top-0 z-100 hidden h-screen w-[60vw] flex-col overflow-y-scroll border-r border-border/20 bg-background px-6
-      shadow-md md:block md:w-[40vw] lg:fixed lg:w-[24rem] lg:px-6"
+          className="relative left-0 top-0 z-100 hidden h-screen w-[60vw] flex-col overflow-y-scroll border-r border-border/20 bg-background
+      shadow-md md:block md:w-[40vw] lg:fixed lg:w-[20rem]"
         >
           <motion.div
-            className="relative mt-4 flex justify-end px-6"
+            className="relative flex justify-end px-6"
             initial={{ opacity: 0 }}
             animate={{
               opacity: showTOC ? 1 : 0,

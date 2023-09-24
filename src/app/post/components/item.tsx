@@ -34,7 +34,7 @@ const PostItem = async ({ post, noBorder }: Props) => {
         />
 
         <div className="mt-2 flex w-full justify-center">
-          <PostThumbnail src={post.thumbnail.url} hasInfo={false} size="sm" />
+          <PostThumbnail src={post.thumbnail.url} hasInfo={false} />
         </div>
 
         <div className="mt-4 space-y-4">

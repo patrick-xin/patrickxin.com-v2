@@ -14,6 +14,10 @@ const computedFields: ComputedFields = {
     type: "string",
     resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
   },
+  url: {
+    type: "string",
+    resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+  },
 };
 
 const Post = defineDocumentType(() => ({
@@ -25,6 +29,7 @@ const Post = defineDocumentType(() => ({
     publishedAt: { type: "string", required: true },
     updatededAt: { type: "string", required: false },
     description: { type: "string", required: true },
+    image: { type: "string", required: true },
     isPublished: { type: "boolean", required: true },
     toc: { type: "boolean", required: true },
     thumbnail: { type: "json", required: false },

@@ -1,3 +1,5 @@
+/* eslint-disable */ // @ts-nocheck
+
 import { useMDXComponent } from "next-contentlayer/hooks";
 import MDXComponents from "./mdx-component";
 

@@ -32,14 +32,14 @@ const ModalDialog = () => {
     >
       <DialogContent className="sm:max-w-[400px]">
         <DialogHeader className="gap-8">
-          <DialogTitle className="text-2xl">Sign in</DialogTitle>
+          <DialogTitle className="text-2xl">Sign in with Github</DialogTitle>
           <DialogDescription>
             Sign in to leave a comment! I&apos;ll get back to you in no time,
             rememeber to come back soon!
           </DialogDescription>
         </DialogHeader>
 
-        <div className="mx-auto flex h-72 w-72 items-center justify-center lg:h-96 lg:w-96">
+        <div className="mx-auto flex h-72 w-72 items-center justify-center">
           <div className="mx-8 flex flex-col">
             <Button
               variant="outline"
@@ -47,7 +47,7 @@ const ModalDialog = () => {
               onClick={() => signIn("github", { callbackUrl: search || "/" })}
             >
               <GitHubLogoIcon className="mr-2 h-4 w-4" />
-              Sign in with Github
+              Github
             </Button>
           </div>
         </div>

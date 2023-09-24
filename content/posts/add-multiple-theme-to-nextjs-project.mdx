@@ -11,6 +11,7 @@ tags:
   - tailwind
   - theme
   - react
+image: '/assets/images/add-multiple-theme-to-nextjs-project/bg.jpg'  
 thumbnail:
   {
     'author': 'Keila Hötzel',
@@ -31,12 +32,10 @@ Initialize a new Next.JS project with Tailwind by running `npx create-next-app w
 
 ### Add Theme Provider
 
-```tsx:pages/_app.tsx {2, 7, 9}
+```tsx:pages/_app.tsx {2, 7, 9} showLineNumbers
 import '../styles/globals.css'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
-
-
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -55,7 +54,7 @@ export default MyApp
 
 We need to define CSS variables inside `globals.css` file so that Tailwind knows how to access them.
 
-```css:globals.css {22-24}
+```css:globals.css {22-24} showLineNumbers
 @layer base {
   :root {
     --bg-color: #f4f4f0;
@@ -89,7 +88,7 @@ These are arbitrary CSS variables that I created, feel free to change them based
 
 Add the highlighted lines to your `tailwind.config.js` file.
 
-```js:tailwind.config.js {8-11}
+```js:tailwind.config.js {8-11} showLineNumbers
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -113,7 +112,7 @@ With current configuration, we are ready to change themes.
 
 In order to switch between themes, we need to create a theme object which contains the themes that our website can use.
 
-```tsx:constants/theme.tsx
+```tsx:constants/theme.tsx showLineNumbers
 export const themes: ITheme[] = [
   {
     title: "Light",
@@ -140,7 +139,7 @@ export const themes: ITheme[] = [
 
 As I'm using TypeScript, I've also created a `ITheme interface`. If you are unfamiliar with TypeScript, you can skip this type definition.
 
-```ts:types/theme.ts
+```ts:types/theme.ts showLineNumbers
 export type ThemeName = "light" | "dark" | "yellow" | "purple";
 export type ThemeTitle = Capitalize<ThemeName>;
 
@@ -161,7 +160,7 @@ There are various ways create a switcher, you can either use a dropdown select o
 
 Let's create a switch button first.
 
-```tsx:components/ThemeSwtichButton.tsx {8-9}
+```tsx:components/ThemeSwtichButton.tsx {8-9} showLineNumbers
 import React from "react";
 import { useTheme } from "next-themes";
 import { themes } from "../constants/theme";

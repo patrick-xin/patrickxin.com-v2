@@ -3,7 +3,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import ReadingProgress from "@/components/reading-progress";
 
 const TableOfContent = () => {
   const [isInView, setInview] = useState(false);
@@ -12,7 +11,7 @@ const TableOfContent = () => {
     return Array.from(document.querySelectorAll("[data-heading]"));
   };
   const headings = useMemo(() => getAllHeadings(), []);
-  const [contentHeight, setContentHeight] = useState<number | null>(null);
+
   const contentRef = useRef<HTMLDivElement>(null);
   const observer = React.useRef<IntersectionObserver>();
   useEffect(() => {
@@ -38,11 +37,7 @@ const TableOfContent = () => {
     });
     return () => observer.current?.disconnect();
   }, [headings, setInview, setHeadingId]);
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.getBoundingClientRect().height);
-    }
-  }, [contentRef]);
+
   const getLevel = useMemo(() => {
     return (nodeName: string) => {
       return Number(nodeName.replace("H", ""));
@@ -55,13 +50,12 @@ const TableOfContent = () => {
           href={`#${heading.id}`}
           key={heading.id}
           className={cn(
-            "relative hover:text-pink-400 transition-colors ease-linear",
+            "relative hover:text-pink-400 text-zinc-600 dark:text-zinc-300 transition-all ease-linear",
             {
-              "text-primary hover:text-primary":
+              "text-primary hover:text-primary scale-105 before:contents-[''] before:absolute before:inset-0 before:-left-2 before:border-l-2 before:border-border/50":
                 headingId === heading.id && isInView,
-              "text-sm lg:text-base": getLevel(heading.nodeName) === 2,
-              "ml-3 lg:ml-4 text-xs lg:text-sm":
-                getLevel(heading.nodeName) === 3,
+              "text-sm": getLevel(heading.nodeName) === 2,
+              "ml-3 lg:ml-4 text-xs": getLevel(heading.nodeName) === 3,
             },
           )}
         >
@@ -77,7 +71,6 @@ const TableOfContent = () => {
           Table of Contents
         </div>
         <nav className="relative flex gap-6">
-          <ReadingProgress height={contentHeight ?? 0} />
           <motion.div
             ref={contentRef}
             initial={{ opacity: 0 }}

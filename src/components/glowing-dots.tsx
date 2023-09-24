@@ -56,16 +56,6 @@ const GlowingDots: React.FC = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (!window) return;
-  //   const numberOfDotsHorizontally = Math.floor(
-  //     window.innerWidth / (dotSize + gapSize),
-  //   );
-  //   const numberOfDotsVertically = Math.floor(
-  //     window.innerHeight / (dotSize + gapSize),
-  //   );
-  //   setNumberOfDots(numberOfDotsHorizontally * numberOfDotsVertically);
-  // }, []);
   useEffect(() => {
     randomizeGlow();
     const id = setInterval(randomizeGlow, 4000);
@@ -121,7 +111,7 @@ const GlowingDots: React.FC = () => {
   return (
     <div
       data-illustration="true"
-      className="absolute inset-0 -top-32 hidden lg:block"
+      className="absolute inset-0 hidden lg:block"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

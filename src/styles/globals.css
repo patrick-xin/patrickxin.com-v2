@@ -4,13 +4,9 @@
 
 @import './code.css';
 
+
 @layer base {
-
-
-
-
-
-:root {
+  :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -18,33 +14,33 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
     /* #725ac1 */
-    /* --primary: 297deg 24% 64%; */
-    --primary: 314deg 81% 84%;
+    --primary: 297 24% 64%;
+    /* --primary: 314 81% 84%; */
     --primary-foreground: 0 0% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 254deg 45% 55%;
+    --accent: 254 45% 55%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --success: 143, 85%, 53%;
     --success-foreground: 0 0% 98%;
-    --border: 254deg 45% 55%;
-    --input: 254deg 45% 55%;
-    --ring: 254deg 45% 55%;
+    --border: 254 45% 55%;
+    --input: 254 45% 55%;
+    --ring: 254 45% 55%;
     --radius: 0.5rem;
     --glow-filter: url("#lightGlow");
   }
  
   .dark {
     /* #1A1A26 */
-    --background: 240deg 19% 13%;
+    --background: 240 19% 13%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 240 14% 19%;
     --card-foreground: 0 0% 98%;
-    --popover: 240, 17%, 9%;
+    --popover: 240 14% 19%;
     --popover-foreground: 0 0% 98%;
     /* #a1c4fd */
     --primary: 217deg 96% 81%;
@@ -65,29 +61,24 @@
     --ring: 217deg 96% 81%;
     --glow-filter: url("#darkGlow");
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
   html{
-    @apply scroll-smooth;
+    @apply scroll-smooth; 
   }
   body {
-    @apply  text-gray-600 bg-background dark:text-[#f0f1f4]/90 antialiased;
-  }
-  p {
-    @apply font-body font-normal lg:text-lg;
+    @apply  text-zinc-600 font-body bg-background dark:text-zinc-300 antialiased selection:bg-primary/10 selection:bg-blend-hue selection:text-primary;
   }
   code, pre{
-    @apply font-code text-[#ff6188] bg-gray-50 dark:bg-[#24283b]  dark:text-[#c0caf5];
+    @apply font-code;
   }
   pre {
-    @apply text-xs md:text-sm tracking-wider overflow-auto rounded-xl rounded-t-none shadow-sm pb-2 md:pb-6;
+    @apply text-xs md:text-sm tracking-wider overflow-auto rounded-xl rounded-t-none shadow-sm;
   }
   code {
-    @apply text-sm px-0.5 tracking-wider rounded-md;
+    @apply text-sm px-0.5 tracking-wider rounded-md text-[#ff6188] bg-indigo-300/10 dark:bg-[#232651]/40  dark:text-[#c0caf5];
   }
 }
 
@@ -120,119 +111,130 @@
     -webkit-text-stroke: 1px rgba(107, 114, 128, 0.25);
   }
 
-
-.vertical-divider-light, .vertical-divider {
-  @apply w-[1.5px] h-[100px] bg-background relative overflow-hidden;
-}
-/* In your global CSS file */
-
-[data-light="true"] {
-  position: relative; /* Required to position pseudo-elements relative to the dot */
-  transition: transform 0.3s ease;
-}
-
-[data-light="true"]::before, [data-light="true"]::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 1px;
-  height: 1px;
-  border-radius: 50%;
-  background-color: #a1c4fd;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-[data-state="medium"] {
-  transform: scale(1.25);
-}
-
-[data-state="medium"]::before {
-  transform: scale(2);
-  box-shadow: 0 0 1px #a1c4fd, 0 0 2px #a1c4fd;
-}
-
-[data-state="medium"]::after {
-  transform: scale(3);
-  box-shadow: 0 0 1px #a1c4fd;
-}
-
-[data-state="high"] {
-  transform: scale(1.5);
-}
-
-[data-state="high"]::before {
-  transform: scale(3);
-  box-shadow: 0 0 1px #a1c4fd, 0 0 2px #a1c4fd;
-}
-
-[data-state="high"]::after {
-  transform: scale(4);
-  box-shadow: 0 0 1px #a1c4fd, 0 0 2px #a1c4fd;
-}
-
-
-[data-state="off"] {
-  transform: scale(1);
-  background-color: rgba(162, 196, 253, 0.2);
-}
-
-.vertical-divider::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%; /* Center the line */
-    transform: translateX(-50%); /* Center the line */
-    width: 100%; /* Full width of the container */
-    height: 100%; /* Full height of the container */
-    background: linear-gradient(to bottom, #1A1A26, #a1c4fd, #c2e9fb); /* Gradient colors: starting with the background color, then transitioning to the line colors */
-    box-shadow: 0 0 10px rgba(162, 196, 253, 0.5); /* Glow effect */
- 
-}
-
-.vertical-divider-light::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%; /* Center the line */
-    transform: translateX(-50%); /* Center the line */
-    width: 100%; /* Full width of the container */
-    height: 100%; /* Full height of the container */
-    background: linear-gradient(to bottom, #FFFFFF, #EFBDEB, #B68CB8); /* Gradient colors: starting with the background color, then transitioning to the line colors */
-    box-shadow: 0 0 10px rgba(239, 180, 235, 0.8); /* Glow effect */
-}
-
-.tran {
-  position: relative;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 20px 40px 20px;
-  border-color: transparent transparent #007bff transparent;
-}
-
-.tran::before {
-  content: "";
-  position: absolute;
-  top: -5px;  /* Adjust these values to position the glowing effect */
-  left: -5px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 20px 40px 20px;
-  border-color: transparent transparent transparent transparent;
-  box-shadow: 0 0 5px #a1c4fd, 0 0 10px #a1c4fd, 0 0 15px #c2e9fb, 0 0 20px #c2e9fb;
-  z-index: -1;
-}
-
- .triangle {
-  width: 0;
-  height: 0;          
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  @apply border-b-[40px] border-b-[#EFBDEB] dark:border-b-[#a1c4fd];
-  filter: var(--glow-filter);         
+  .vertical-divider-light, .vertical-divider {
+    @apply w-[1.5px] h-[100px] bg-background relative overflow-hidden;
   }
+  .vertical-divider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%; /* Center the line */
+      transform: translateX(-50%); /* Center the line */
+      width: 100%; /* Full width of the container */
+      height: 100%; /* Full height of the container */
+      background: linear-gradient(to bottom, #1A1A26, #a1c4fd, #c2e9fb); /* Gradient colors: starting with the background color, then transitioning to the line colors */
+      box-shadow: 0 0 10px rgba(162, 196, 253, 0.5); /* Glow effect */
+  
+  }
+
+  .vertical-divider-light::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%; /* Center the line */
+      transform: translateX(-50%); /* Center the line */
+      width: 100%; /* Full width of the container */
+      height: 100%; /* Full height of the container */
+      background: linear-gradient(to bottom, #FFFFFF, #EFBDEB, #B68CB8); /* Gradient colors: starting with the background color, then transitioning to the line colors */
+      box-shadow: 0 0 10px rgba(239, 180, 235, 0.8); /* Glow effect */
+  }
+  .neon{
+      @apply text-zinc-600 dark:text-zinc-100;
+      text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px rgba(50, 33, 84, 0.25),
+      0 0 80px rgba(50, 33, 84, 0.25),
+      0 0 90px rgba(50, 33, 84, 0.25),
+      0 0 100px rgba(50, 33, 84, 0.25),
+      0 0 150px rgba(50, 33, 84, 0.25);
+    }
+
+
+  [data-light="true"] {
+    position: relative; /* Required to position pseudo-elements relative to the dot */
+    transition: transform 0.3s ease;
+  }
+
+  [data-light="true"]::before, [data-light="true"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background-color: #a1c4fd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  [data-state="medium"] {
+    transform: scale(1.25);
+  }
+
+  [data-state="medium"]::before {
+    transform: scale(2);
+    box-shadow: 0 0 1px #a1c4fd, 0 0 2px #a1c4fd;
+  }
+
+  [data-state="medium"]::after {
+    transform: scale(3);
+    box-shadow: 0 0 1px #a1c4fd;
+  }
+
+  [data-state="high"] {
+    transform: scale(1.5);
+  }
+
+  [data-state="high"]::before {
+    transform: scale(3);
+    box-shadow: 0 0 1px #a1c4fd, 0 0 2px #a1c4fd;
+  }
+
+  [data-state="high"]::after {
+    transform: scale(4);
+    box-shadow: 0 0 1px #a1c4fd, 0 0 2px #a1c4fd;
+  }
+
+  [data-state="off"] {
+    transform: scale(1);
+    background-color: rgba(162, 196, 253, 0.2);
+  }
+
+
+
+  .tran {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 40px 20px;
+    border-color: transparent transparent #007bff transparent;
+  }
+
+  .tran::before {
+    content: "";
+    position: absolute;
+    top: -5px;  /* Adjust these values to position the glowing effect */
+    left: -5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 40px 20px;
+    border-color: transparent transparent transparent transparent;
+    box-shadow: 0 0 5px #a1c4fd, 0 0 10px #a1c4fd, 0 0 15px #c2e9fb, 0 0 20px #c2e9fb;
+    z-index: -1;
+  }
+
+  .triangle {
+    width: 0;
+    height: 0;          
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    @apply border-b-[40px] border-b-[#EFBDEB] dark:border-b-[#a1c4fd];
+    filter: var(--glow-filter);         
+    }
 
   .nav-link-shadow {
     box-shadow: rgba(50, 33, 84, 0.25) 52px 12px 50px -8px;
@@ -240,16 +242,28 @@
   .nav-link-shadow-reversed {
     box-shadow: rgba(50, 33, 84, 0.25) -52px -12px 50px -8px;
   }
-  .neon{
-    color: #fff;
-    text-shadow:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #fff,
-    0 0 40px #0ff,
-    0 0 80px #0ff,
-    0 0 90px #0ff,
-    0 0 100px #0ff,
-    0 0 150px #0ff;
+
+  .conic {
+    @apply z-50 rounded overflow-hidden p-2;
   }
+	.conic::before {
+    @apply absolute z-[-2] w-[200%] content-[""] -left-1/2 -top-1/2 h-[200%] dark:bg-[#2a2a38] bg-zinc-50;
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-image: conic-gradient(transparent, #a1c4fd,
+    #5d49d1, #725ac1, #ff1e8a ,
+    #ff6188, transparent 30%);
+		animation: rotate 3s linear infinite;
+	}
+	.conic::after {
+    @apply dark:bg-[#2a2a38] content-[""] bg-zinc-50 absolute -z-[1] left-[6px] top-[6px] rounded;
+		width: calc(100% - 12px);
+		height: calc(100% - 12px);
+	}
+  @keyframes rotate {
+    100% {
+        transform: rotate(1turn);
+    }
+  }
+
 }

@@ -2,11 +2,11 @@
 
 import { TextAlignCenterIcon } from "@radix-ui/react-icons";
 import { AnimatePresence, motion } from "framer-motion";
-import useStore from "@/store";
+import { useTOCStore } from "@/store/toc";
 
 const TocButton = () => {
-  const toggle = useStore((state) => state.toggle);
-  const showTOC = useStore((state) => state.showTOC);
+  const toggle = useTOCStore((state) => state.toggle);
+  const showTOC = useTOCStore((state) => state.showTOC);
   return (
     <AnimatePresence>
       {!showTOC && (

@@ -11,7 +11,7 @@ const PublishSection = ({
 }) => {
   return (
     <div className="mx-auto max-w-2xl lg:mt-14">
-      <div className="my-4 w-full text-sm text-muted-foreground lg:text-lg">
+      <div className="my-4 w-full bg-red-300 text-sm dark:text-zinc-100 lg:text-lg">
         Latest Posts
       </div>
       <div className="flex flex-col justify-center space-y-2 lg:space-y-6">
@@ -34,6 +34,7 @@ const PublishSection = ({
       <div className="mx-auto mt-8 flex justify-center lg:justify-start">
         <GradiantLink href="/post" isActive name="All posts" center />
       </div>
+      mI
     </div>
   );
 };

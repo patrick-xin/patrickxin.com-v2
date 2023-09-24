@@ -7,8 +7,8 @@ import Description from "./description";
 import PublishTime from "./publish-time";
 import ReadingTime from "./reading-time";
 import PostTitle from "./title";
-import PostStats from "../status";
 import PostThumbnail from "./thumbnail";
+import PostStats from "../status";
 
 type PostHeaderProps = Pick<
   Post,
@@ -65,7 +65,6 @@ const PostHeader = ({
       <Description description={description} />
       <div className="-mx-4 md:mx-0">
         <PostThumbnail
-          size="lg"
           title={title}
           src={thumbnail.url}
           author={thumbnail.author}

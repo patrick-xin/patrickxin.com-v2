@@ -12,8 +12,9 @@ import ThemeProvider from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/config/site";
+import NoiseOverlay from "@/components/overlay";
 
-const firaCode = Space_Mono({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-code",
@@ -34,7 +35,7 @@ const montserrat = Raleway({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const spaceMono = Poppins({
+const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-body",
@@ -81,14 +82,15 @@ export default function RootLayout(props: {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          firaCode.variable,
-          montserrat.variable,
           spaceMono.variable,
+          montserrat.variable,
+          poppins.variable,
           architectsDaughtere.variable,
           "relative min-h-full max-w-[100vw]",
         )}
       >
         <ThemeProvider>
+          <NoiseOverlay />
           <main className="flex min-h-screen flex-col">
             <div className="mx-4 mt-20 grow md:mx-6 lg:mx-0">
               {props.children}

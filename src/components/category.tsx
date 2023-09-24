@@ -6,7 +6,7 @@ import { CATEGORIES } from "@/lib/constants";
 import useScrollCounter from "@/lib/hooks/useScrollCounter";
 import { cn } from "@/lib/utils";
 import GradiantLink from "./gradiant-link";
-import { CommandMenu } from "./command-menu";
+import { CommandMenu } from "./command/command-menu";
 
 const Category = () => {
   const pathName = usePathname();

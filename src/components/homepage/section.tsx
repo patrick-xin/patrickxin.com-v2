@@ -1,5 +1,3 @@
-import React from "react";
-
 type SectionProps = {
   title: string;
   intro: string;
@@ -9,7 +7,7 @@ type SectionProps = {
 
 const Section = ({ title, intro, description, children }: SectionProps) => {
   return (
-    <div className="mx-auto h-screen max-w-4xl">
+    <div className="mx-auto min-h-[50vh] max-w-4xl">
       <div className="flex flex-col items-center justify-center">
         <div className="vertical-divider-light dark:vertical-divider" />
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-lightGlow dark:shadow-darkGlow" />

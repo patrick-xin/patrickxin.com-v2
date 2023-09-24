@@ -17,6 +17,7 @@ export type Post = {
   publishedAt: string
   updatededAt?: string | undefined
   description: string
+  image: string
   isPublished: boolean
   toc: boolean
   thumbnail?: any | undefined
@@ -27,6 +28,7 @@ export type Post = {
   readingTime: json
   wordCount: number
   slug: string
+  url: string
 }  
 
 /** Nested types */

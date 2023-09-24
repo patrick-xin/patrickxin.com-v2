@@ -1,24 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error;
-  reset: () => void;
-}) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
-
+export default function Error({ reset }: { reset: () => void }) {
   return (
-    <div>
-      <p>Oh no, something went wrong... maybe refresh?</p>
-      <Button onClick={reset}>Refresh</Button>
+    <div className="mx-auto max-w-2xl">
+      <p className="mb-12 text-2xl">
+        Opts, something went wrong... maybe refresh?
+      </p>
+      <div className="flex w-full justify-end">
+        <Button onClick={reset}>Refresh</Button>
+      </div>
     </div>
   );
 }

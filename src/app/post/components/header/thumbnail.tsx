@@ -8,7 +8,6 @@ type PostThumbnailProps = {
   fromUrl?: string;
   src: string;
   hasInfo?: boolean;
-  size?: "sm" | "md" | "lg";
   rounded?: boolean;
 };
 
@@ -16,12 +15,9 @@ const PostThumbnail = async ({
   title,
   src,
   hasInfo = true,
-  size = "md",
   rounded = false,
 }: PostThumbnailProps) => {
-  const { url, width, height } = await getBase64(src);
-  const h = size === "md" ? 500 : size === "sm" ? 200 : height;
-  const w = size === "md" ? 375 : size === "sm" ? 300 : width;
+  const { url } = await getBase64(src);
 
   return (
     <div>
@@ -34,8 +30,8 @@ const PostThumbnail = async ({
           "aspect-[4/3] w-full object-cover shadow-md",
           rounded && "rounded",
         )}
-        width={w}
-        height={h}
+        width={800}
+        height={600}
         alt={`${title}-image`}
         priority
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
