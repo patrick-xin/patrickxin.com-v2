@@ -2,7 +2,7 @@ import GlowingDots from "../glowing-dots";
 
 const Hero = () => {
   return (
-    <div className="relative mx-auto flex h-[60vh] w-full flex-col justify-center lg:h-screen">
+    <div className="relative mx-auto flex h-[90vh] w-full flex-col justify-center">
       <GlowingDots />
       <div className="relative mx-auto">
         <div className="text-xl font-medium">

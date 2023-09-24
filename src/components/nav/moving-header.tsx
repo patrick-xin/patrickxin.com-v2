@@ -6,6 +6,7 @@ import useScrollCounter from "@/lib/hooks/useScrollCounter";
 import { cn } from "@/lib/utils";
 import { useTOCStore } from "@/store/toc";
 import MainNav from "./main-nav";
+import ReadingProgress from "../reading-progress";
 
 const headerVariants = {
   open: {
@@ -53,8 +54,13 @@ const MovingHeader = ({
           {!reached ? (
             <MainNav />
           ) : (
-            <div className="flex w-full justify-center px-4 lg:py-6">
-              {children}
+            <div className="relative w-full">
+              <div className="flex w-full justify-center px-4 lg:py-6">
+                {children}
+              </div>
+              <div className="absolute -bottom-1.5 w-full md:w-[70%] lg:inset-x-0 lg:bottom-8 lg:mx-auto">
+                <ReadingProgress />
+              </div>
             </div>
           )}
         </motion.header>

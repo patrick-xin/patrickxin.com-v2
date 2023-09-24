@@ -28,7 +28,7 @@ const MainNav = ({ fixed = false }) => {
           <Image alt="logo-image" src="/logo.svg" height={32} width={32} />
         </Link>
         <div className="flex flex-1 items-center justify-end gap-6 md:gap-8 lg:gap-10">
-          <ul className="flex items-center gap-6 text-sm md:gap-8 md:text-base lg:gap-10">
+          <ul className="hidden items-center gap-6 text-sm md:gap-8 md:text-base lg:flex lg:gap-10">
             <li>
               <Link
                 href="/"

@@ -30,18 +30,18 @@ const getPosts = async () => {
 export default async function Home() {
   const posts = await getPosts();
   return (
-    <div className="relative -mt-20">
+    <div className="-mt-20">
       <MainNav fixed />
       <Hero />
       <Image
         src={bg}
         fill
         priority
-        className="fixed inset-0 -top-24 -z-10 opacity-20 bg-blend-darken dark:opacity-10"
+        className="fixed inset-0 -top-24 -z-10 object-fill opacity-20 bg-blend-darken dark:opacity-10"
         alt="background-image"
       />
 
-      <div className="lg:space-y-24">
+      <div className="space-y-16 lg:space-y-24">
         <Section
           title="Publish"
           intro="I do my best to journal"

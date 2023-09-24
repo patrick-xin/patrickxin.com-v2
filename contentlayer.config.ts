@@ -16,7 +16,7 @@ const computedFields: ComputedFields = {
   },
   url: {
     type: "string",
-    resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+    resolve: (post) => `/post/${post._raw.flattenedPath}`,
   },
 };
 

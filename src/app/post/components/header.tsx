@@ -6,7 +6,6 @@ import MovingHeader from "@/components/nav/moving-header";
 import type { Post } from "contentlayer/generated";
 import { CommandMenu } from "@/components/command/command-menu";
 
-import ReadingProgress from "@/components/reading-progress";
 import { ThemeToggle } from "@/components/nav/theme-toggle";
 import PostTitle from "./header/title";
 
@@ -26,9 +25,7 @@ const PostPageHeader = ({ category, title }: PostPageHeaderProps) => {
           />
         </div>
         <PostTitle title={title} size="sm" isGradient />
-        <div className="absolute bottom-2 left-0 w-full">
-          <ReadingProgress />
-        </div>
+
         <div className="flex items-center gap-2">
           <CommandMenu />
           <ThemeToggle />

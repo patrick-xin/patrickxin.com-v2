@@ -13,32 +13,31 @@ const InputSearch = ({
   input,
 }: InputSearchProps) => {
   const ref = useRef<HTMLInputElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     ref?.current?.focus();
   }, []);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        e.preventDefault(); // Prevent the default form submission
-        const fakeSubmitEvent = new Event("submit", { bubbles: true });
-        const formElement = document.querySelector("form");
+      if (e.key === "Enter" && containerRef.current) {
+        e.preventDefault();
+        const formElement = containerRef.current.querySelector("form");
+
         if (formElement) {
-          formElement.dispatchEvent(fakeSubmitEvent); // Trigger form submission
+          formElement.dispatchEvent(new Event("submit", { bubbles: true }));
         }
       }
     };
 
-    // Add an event listener to the document to capture Enter key presses
     document.addEventListener("keydown", handleKeyPress);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
-  }, [handleSubmit]);
+  }, []);
   return (
-    <div className="absolute inset-x-0 bottom-0 p-4">
+    <div className="absolute inset-x-0 bottom-0 p-4" ref={containerRef}>
       <form
         onSubmit={handleSubmit}
         className="flex items-center justify-between gap-3"

@@ -50,7 +50,7 @@ const AllBlogsPage = () => {
         src={bg}
         fill
         priority
-        className="dakr:opacity-5 fixed inset-0 -top-24 -z-10 opacity-20 bg-blend-darken"
+        className="fixed inset-0 -top-24 -z-10 opacity-20 bg-blend-darken dark:opacity-5"
         alt="background-image"
       />
       <div className="mx-auto my-4 max-w-4xl md:my-6 lg:mb-24 lg:mt-12">

@@ -48,7 +48,7 @@ export function CommandMenu({ ...props }: DialogProps) {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        toggleSearch(false);
+        toggleSearch(true);
       }
     };
 
@@ -58,7 +58,7 @@ export function CommandMenu({ ...props }: DialogProps) {
 
   const runCommand = useCallback(
     (command: () => unknown) => {
-      toggleSearch(false);
+      toggleSearch(true);
       command();
     },
     [toggleSearch],
@@ -91,19 +91,22 @@ export function CommandMenu({ ...props }: DialogProps) {
                   placeholder="Search whole website..."
                 />
               </div>
-              <CommandGroup
-                heading="Tools"
-                onClick={() => toggleAiContent(true)}
-              >
-                <div className="relative flex cursor-pointer select-none items-center rounded-sm bg-indigo-400/20 px-2 py-2.5 text-sm outline-none aria-selected:bg-zinc-100 aria-selected:text-zinc-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:aria-selected:bg-zinc-800 dark:aria-selected:text-zinc-50">
-                  <MagicWandIcon className="mr-2 h-4 w-4" />
-                  <span>Ask AI</span>
-                </div>
-              </CommandGroup>
+
               <CommandList>
                 <CommandEmpty className="my-6 text-center font-black">
                   No results found.
                 </CommandEmpty>
+                <CommandGroup
+                  className="hidden lg:block"
+                  heading="Tools"
+                  onClick={() => toggleAiContent(true)}
+                >
+                  <div className="relative my-4 flex cursor-pointer select-none items-center rounded-sm bg-indigo-400/20 px-2 py-2.5 text-sm outline-none">
+                    <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-70 blur-md transition-all duration-200 group-hover:scale-110" />
+                    <MagicWandIcon className="mr-2 h-4 w-4" />
+                    <span>Ask AI</span>
+                  </div>
+                </CommandGroup>
                 <CommandGroup heading="Links">
                   {NAGIGATIONS.filter((nav) =>
                     nav.title.toLowerCase().includes(search),
@@ -214,7 +217,9 @@ export function CommandMenu({ ...props }: DialogProps) {
               </CommandList>
             </div>
           ) : (
-            <AIContent />
+            <div className="hidden lg:block">
+              <AIContent />
+            </div>
           )}
         </div>
       </CommandDialog>

@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import StatisticsCard from "./_components/stats-card";
 import AddPost from "./_components/add-post";
 import AdminWrapper from "./_components/wrapper";
+import AddEmbeddings from "./_components/add-embeddings";
 
 const getData = async () => {
   const data = await prisma.post.findMany({
@@ -48,6 +49,7 @@ const Page = async () => {
   return (
     <AdminWrapper title="Dashboard">
       <AddPost />
+      <AddEmbeddings />
       <section className="mt-6 flex flex-wrap items-center gap-6">
         <StatisticsCard
           count={data.commentsCount}

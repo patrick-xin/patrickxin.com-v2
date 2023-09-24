@@ -13,7 +13,7 @@ const StatisticsCard = ({
   iconBg,
 }: StatisticsCardProps) => {
   return (
-    <Card className="w-[320px] border-border/20 bg-gray-50 dark:bg-[#24283b]">
+    <Card className="w-[240px] border-border/20 bg-gray-50 dark:bg-indigo-600/5">
       <CardHeader>
         <div className="flex items-center justify-center gap-6">
           <div
