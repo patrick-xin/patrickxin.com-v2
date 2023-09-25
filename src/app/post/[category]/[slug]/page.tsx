@@ -65,7 +65,7 @@ const BlogPage = async ({
 }: {
   params: { category: string; slug: string };
 }) => {
-  const post = allPosts.find((p) => p._raw.flattenedPath === params.slug);
+  const post = allPosts.find((p) => p.slug === params.slug);
 
   if (!post) notFound();
   const {

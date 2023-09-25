@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
 import PostCategory from "@/components/category";
 import MovingHeader from "@/components/nav/header";
@@ -45,6 +46,7 @@ const Page = ({ params }: { params: { category: string } }) => {
   const posts = allPosts.filter((p) => {
     return p.category === params.category;
   });
+  if (posts.length < 1) notFound();
 
   return (
     <PageWrapper>

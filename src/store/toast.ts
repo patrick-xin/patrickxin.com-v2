@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 type Position = "topCenter" | "bottomCenter" | "topRight" | "bottomRight";
 type ToastType = "success" | "error" | "warning";
@@ -23,7 +23,7 @@ type ToastState = {
 };
 
 const useToastStore = create<ToastState>((set) => ({
-  isToastOpen: true,
+  isToastOpen: false,
   closeToast: () => set(() => ({ isToastOpen: false })),
   message: "",
   toastType: "success",
