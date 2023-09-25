@@ -1,47 +1,70 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-import { getServerSession } from "next-auth";
-import { Button } from "@/components/ui/button";
-import { authOptions } from "@/lib/auth";
-import { ThemeToggle } from "./theme-toggle";
-import UserProfile from "./profile";
+import React from "react";
+import { motion } from "framer-motion";
+import useScrollCounter from "@/lib/hooks/useScrollCounter";
+import { cn } from "@/lib/utils";
+import { useTOCStore } from "@/store/toc";
+import MainNav from "./main-nav";
+import ReadingProgress from "../reading-progress";
 
-const Header = async () => {
-  const session = await getServerSession(authOptions);
+const headerVariants = {
+  open: {
+    height: 80,
+    transition: { ease: "easeInOut", duration: 0.3 },
+  },
+  collapsed: {
+    height: 64,
+    transition: { ease: "easeInOut", duration: 0.3, delayChildren: 0.5 },
+  },
+};
+
+type MovingHeaderProps = {
+  count?: number;
+  children?: React.ReactNode;
+  isGradiant?: boolean;
+};
+
+const Header = ({
+  count = 100,
+  children,
+  isGradiant = false,
+}: MovingHeaderProps) => {
+  const reached = useScrollCounter(count);
+  const showTOC = useTOCStore((state) => state.showTOC);
 
   return (
     <div>
-      <header className="sticky top-0 z-40 mx-auto h-12 w-full max-w-7xl px-24 backdrop-blur md:h-16">
-        <nav
-          className="mx-auto flex h-full w-full max-w-7xl items-center justify-between
-       px-8 md:px-12"
+      <div
+        className={cn(
+          "fixed left-0 top-0 z-40 w-full backdrop-blur-lg transition-all ease-in-out",
+          {
+            "ml-48 duration-200": showTOC,
+            "bg-gradient-to-r from-blue-600/10 to-violet-600/10": isGradiant,
+          },
+        )}
+      >
+        <motion.header
+          viewport={{ once: true }}
+          initial="open"
+          animate={reached ? "collapsed" : "open"}
+          variants={headerVariants}
+          className={cn("flex items-center transition-all ease-linear", {})}
         >
-          <div className="flex flex-1 items-center">
-            <Link href="/">
-              <Image alt="logo-image" src="/logo.svg" height={32} width={32} />
-            </Link>
-            <ul className="flex items-center gap-4 pl-24">
-              <li>
-                <Button asChild variant="link">
-                  <Link href="/">home</Link>
-                </Button>
-              </li>
-              <li>
-                <Button asChild variant="link">
-                  <Link href="/post">post</Link>
-                </Button>
-              </li>
-            </ul>
-          </div>
-          <div className="hidden items-center lg:flex">
-            <div className="mx-12 lg:mt-1 lg:block">
-              <ThemeToggle />
+          {!reached ? (
+            <MainNav />
+          ) : (
+            <div className="relative w-full">
+              <div className="flex w-full justify-center px-4 lg:py-6">
+                {children}
+              </div>
+              <div className="absolute -bottom-1.5 w-full md:w-[70%] lg:inset-x-0 lg:bottom-8 lg:mx-auto">
+                <ReadingProgress />
+              </div>
             </div>
-            {session ? <UserProfile session={session} /> : null}
-          </div>
-        </nav>
-      </header>
+          )}
+        </motion.header>
+      </div>
     </div>
   );
 };

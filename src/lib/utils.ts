@@ -101,6 +101,7 @@ export const getAdjacentPosts = (slug: string) => {
         : {
             slug: allPosts[postIndex - 1].slug,
             title: allPosts[postIndex - 1].title,
+            category: allPosts[postIndex - 1].category,
           },
     next:
       postIndex >= allPosts.length - 1
@@ -108,6 +109,7 @@ export const getAdjacentPosts = (slug: string) => {
         : {
             slug: allPosts[postIndex + 1].slug,
             title: allPosts[postIndex + 1].title,
+            category: allPosts[postIndex + 1].category,
           },
   };
 };

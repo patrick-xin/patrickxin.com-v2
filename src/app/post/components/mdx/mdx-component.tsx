@@ -4,8 +4,10 @@ import Link from "next/link";
 
 import { HashIcon, QuoteEndIcon, QuoteStartIcon } from "@/components/icon";
 import Pre from "./pre";
+import ToastForPost from "./post-toast";
 
 const MDXComponents = {
+  ToastForPost,
   MDXImage: ({ ...props }) => (
     <Image
       {...props}

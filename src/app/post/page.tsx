@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PostList from "@/app/post/components/list";
 import Category from "@/components/category";
-import MovingHeader from "@/components/nav/moving-header";
+import MovingHeader from "@/components/nav/header";
 import Footer from "@/components/footer";
 import { siteConfig } from "@/config/site";
 import PageWrapper from "@/components/page-wrapper";

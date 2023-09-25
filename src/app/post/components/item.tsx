@@ -14,6 +14,7 @@ type Props = {
     | "thumbnail"
     | "publishedAt"
     | "readingTime"
+    | "category"
   >;
   noBorder: boolean;
 };
@@ -27,7 +28,10 @@ const PostItem = async ({ post, noBorder }: Props) => {
         !noBorder && "border-b border-border/20",
       )}
     >
-      <Link href={`/post/${post.slug}`} className="group inline-block">
+      <Link
+        href={`/post/${post.category}/${post.slug}`}
+        className="group inline-block"
+      >
         <PublishTime
           className="text-xs dark:text-gray-400 lg:text-sm"
           publishedAt={post.publishedAt}

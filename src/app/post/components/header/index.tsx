@@ -58,7 +58,7 @@ const PostHeader = ({
             </div>
           </div>
 
-          <PostStats slug={slug} />
+          <PostStats slug={slug} category={category} />
         </div>
       </div>
 

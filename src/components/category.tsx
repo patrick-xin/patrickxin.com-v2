@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import GradiantLink from "./gradiant-link";
 import { CommandMenu } from "./command/command-menu";
 
-const Category = () => {
+const PostCategory = () => {
   const pathName = usePathname();
   const active = pathName.split("/")[2];
   const reached = useScrollCounter(400);
@@ -44,4 +44,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default PostCategory;

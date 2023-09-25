@@ -1,7 +1,11 @@
-import DialogModal from "@/components/modal-dialog";
+import SignInModal from "@/components/signin-modal";
 
 const Page = () => {
-  return <DialogModal />;
+  return (
+    <div>
+      <SignInModal />
+    </div>
+  );
 };
 
 export default Page;

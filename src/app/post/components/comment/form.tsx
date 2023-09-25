@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { usePostComments } from "../../hooks";
+import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
 const COMMENT_FORM_SCHEMA = z.object({
   content: z
@@ -29,7 +30,7 @@ const COMMENT_FORM_SCHEMA = z.object({
 
 type FormSchemaType = z.infer<typeof COMMENT_FORM_SCHEMA>;
 
-const CommentForm = ({ slug }: { slug: string }) => {
+const CommentForm = ({ slug,category }: { slug: string,category:string }) => {
   const { data: session } = useSession();
   const { comments, mutate, isLoading } = usePostComments(slug);
   const form = useForm<FormSchemaType>({
@@ -39,7 +40,7 @@ const CommentForm = ({ slug }: { slug: string }) => {
   const { toast } = useToast();
   const buttonDisabled = isLoading || form.formState.isSubmitting;
   async function onSubmit(values: FormSchemaType) {
-    const res = await fetch(`/post/${slug}/api/comments`, {
+    const res = await fetch(`/api/post/${slug}/comments`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -90,6 +91,8 @@ const CommentForm = ({ slug }: { slug: string }) => {
                 type="submit"
                 variant="outline"
               >
+                {buttonDisabled && <DotsHorizontalIcon/>}
+              
                 Submit
               </Button>
             ) : (
@@ -100,7 +103,7 @@ const CommentForm = ({ slug }: { slug: string }) => {
                     <Link
                       href={{
                         pathname: "/signin",
-                        query: { callbackUrl: `/post/${slug}` },
+                        query: { callbackUrl: `/post/${category}/${slug}` },
                       }}
                     >
                       Sign in to comment

@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const ModalDialog = () => {
+const SignInModal = () => {
   const [open, setOpen] = useState(true);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -56,4 +56,4 @@ const ModalDialog = () => {
   );
 };
 
-export default ModalDialog;
+export default SignInModal;

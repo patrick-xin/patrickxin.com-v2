@@ -23,7 +23,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { CATEGORIES, NAGIGATIONS } from "@/lib/constants";
+import { NAGIGATIONS } from "@/lib/constants";
 import useDebouncedSearch from "@/lib/hooks/useDebouncedSearch";
 import { cn } from "@/lib/utils";
 import { useAIStore } from "@/store/ai";
@@ -58,7 +58,7 @@ export function CommandMenu({ ...props }: DialogProps) {
 
   const runCommand = useCallback(
     (command: () => unknown) => {
-      toggleSearch(true);
+      toggleSearch(false);
       command();
     },
     [toggleSearch],
@@ -101,10 +101,17 @@ export function CommandMenu({ ...props }: DialogProps) {
                   heading="Tools"
                   onClick={() => toggleAiContent(true)}
                 >
-                  <div className="relative my-4 flex cursor-pointer select-none items-center rounded-sm bg-indigo-400/20 px-2 py-2.5 text-sm outline-none">
-                    <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-70 blur-md transition-all duration-200 group-hover:scale-110" />
-                    <MagicWandIcon className="mr-2 h-4 w-4" />
-                    <span>Ask AI</span>
+                  <div className="relative my-4 flex cursor-pointer select-none items-center justify-between rounded-sm bg-indigo-400/20 px-2 py-2.5 text-sm outline-none">
+                    <div className="flex items-center">
+                      <MagicWandIcon className="mr-2 h-4 w-4" />
+                      <div>Ask AI</div>
+                    </div>
+                    <div>
+                      <div className="relative text-xs text-primary">
+                        <span className="absolute -inset-1 -z-10 inline-block w-10 rounded-xl bg-gradient-to-l from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-70 blur transition-all duration-200 group-hover:scale-110" />
+                        new
+                      </div>
+                    </div>
                   </div>
                 </CommandGroup>
                 <CommandGroup heading="Links">
@@ -123,7 +130,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                         );
                       }}
                     >
-                      <span>{navItem.icon}</span>
+                      {navItem.icon}
                       <span>{navItem.title}</span>
                     </CommandItem>
                   ))}
@@ -161,34 +168,13 @@ export function CommandMenu({ ...props }: DialogProps) {
                 )}
 
                 <CommandSeparator />
-                <CommandGroup heading="Category">
-                  {CATEGORIES.filter((nav) =>
-                    nav.title.toLowerCase().includes(search),
-                  ).map((navItem) => (
-                    <CommandItem
-                      className="flex items-center gap-3"
-                      key={navItem.href}
-                      value={navItem.title}
-                      onSelect={() => {
-                        runCommand(() =>
-                          router.push(navItem.href as string, {
-                            scroll: true,
-                          }),
-                        );
-                      }}
-                    >
-                      <span>{navItem.icon}</span>
-                      <span>{navItem.title}</span>
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-                <CommandSeparator />
+
                 <CommandGroup heading="Theme">
                   <CommandItem
                     className="group"
                     onSelect={() => runCommand(() => setTheme("light"))}
                   >
-                    <SunIcon className="mr-2 h-2 w-2 transition-colors ease-linear group-hover:text-orange-500" />
+                    <SunIcon className="mr-2 h-2 w-2 text-xs transition-colors ease-linear group-hover:text-orange-500" />
                     Light
                   </CommandItem>
                   <CommandItem

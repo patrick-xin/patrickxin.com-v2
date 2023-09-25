@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useDebounce from "./useDebounce";
-import { CATEGORIES, NAGIGATIONS } from "../constants";
+import { NAGIGATIONS } from "../constants";
 import { capitalizeFirstLetter } from "../utils";
 
 type PostType = { title: string; slug: string };
@@ -12,7 +12,6 @@ interface UseDebouncedSearchOptions {
 
 const nonApiTriggerTerms = [
   ...NAGIGATIONS.map((nav) => nav.title.toLowerCase()),
-  ...CATEGORIES.map((cat) => cat.title.toLowerCase()),
   "light",
   "dark",
   "system",

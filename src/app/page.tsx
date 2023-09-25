@@ -40,7 +40,6 @@ export default async function Home() {
         className="fixed inset-0 -top-24 -z-10 object-fill opacity-20 bg-blend-darken dark:opacity-10"
         alt="background-image"
       />
-
       <div className="space-y-16 lg:space-y-24">
         <Section
           title="Publish"
@@ -51,7 +50,7 @@ export default async function Home() {
               I'm learning."
         >
           <div className="mx-auto max-w-2xl lg:mt-14">
-            <div className="my-4 w-full text-sm text-muted-foreground lg:text-lg">
+            <div className="my-4 w-full text-sm font-medium dark:text-zinc-100 lg:text-lg">
               Latest Posts
             </div>
             <div className="flex flex-col justify-center space-y-2 lg:space-y-6">

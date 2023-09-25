@@ -6,9 +6,10 @@ type PostNavLinkProps = {
   slug: string;
   title: string;
   isRight: boolean;
+  category: string;
 };
 
-const NavLink = ({ slug, title, isRight }: PostNavLinkProps) => {
+const NavLink = ({ slug, title, isRight, category }: PostNavLinkProps) => {
   return (
     <div
       className={cn(
@@ -21,7 +22,7 @@ const NavLink = ({ slug, title, isRight }: PostNavLinkProps) => {
       {isRight ? <ArrowRightIcon /> : <ArrowLeftIcon />}
 
       <Link
-        href={`/post/${slug}`}
+        href={`/post/${category}/${slug}`}
         className={cn(
           "group-hover:underline neon underline-offset-4 decoration-primary/50",
         )}
@@ -42,12 +43,18 @@ const AdjacentPost = ({ slug }: { slug: string }) => {
           isRight={false}
           title={posts.previous.title}
           slug={posts.previous.slug}
+          category={posts.previous.category}
         />
       ) : (
         <div className="h-full w-full flex-1" />
       )}
       {posts.next ? (
-        <NavLink isRight title={posts.next.title} slug={posts.next.slug} />
+        <NavLink
+          isRight
+          title={posts.next.title}
+          slug={posts.next.slug}
+          category={posts.next.category}
+        />
       ) : (
         <div className="h-full w-full flex-1" />
       )}

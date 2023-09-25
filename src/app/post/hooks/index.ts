@@ -8,7 +8,7 @@ export const usePostLikes = (slug: string) => {
   const [isLiked, setLike] = useLocalStorage(slug, false);
 
   const { data, mutate, isLoading } = useSWR<{ likes: number }>(
-    `/post/${slug}/api/likes`,
+    `/api/post/${slug}/likes`,
     fetcher,
   );
 
@@ -17,7 +17,7 @@ export const usePostLikes = (slug: string) => {
     if (isLiked) return;
 
     setLike(true);
-    await fetch(`/post/${slug}/api/likes`, { method: "POST" });
+    await fetch(`/api/post/${slug}/likes`, { method: "POST" });
     mutate({ likes: data?.likes ?? 0 + 1 });
   };
 
@@ -26,7 +26,7 @@ export const usePostLikes = (slug: string) => {
 
 export const usePostViews = (slug: string) => {
   const { data, error, isLoading } = useSWR<{ views: number }>(
-    `/post/${slug}/api/views`,
+    `/api/post/${slug}/views`,
     fetcher,
     { revalidateOnFocus: false },
   );
@@ -37,7 +37,7 @@ export const usePostComments = (slug: string) => {
   const { data, isLoading, mutate } = useSWR<{
     commentsCount: number;
     comments: CommentWithUserAndReply[];
-  }>(`/post/${slug}/api/comments`, fetcher);
+  }>(`/api/post/${slug}/comments`, fetcher);
   return {
     commentsCount: data?.commentsCount,
     comments: data?.comments,

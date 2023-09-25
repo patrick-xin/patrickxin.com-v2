@@ -63,7 +63,7 @@
   }
 
   * {
-    @apply border-border;
+    @apply border-border/50;
   }
   html{
     @apply scroll-smooth; 

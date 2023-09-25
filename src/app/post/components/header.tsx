@@ -2,11 +2,12 @@
 
 import React from "react";
 import GradiantLink from "@/components/gradiant-link";
-import MovingHeader from "@/components/nav/moving-header";
+import MovingHeader from "@/components/nav/header";
 import type { Post } from "contentlayer/generated";
 import { CommandMenu } from "@/components/command/command-menu";
 
 import { ThemeToggle } from "@/components/nav/theme-toggle";
+import MobileDrawer from "@/components/nav/mobile-drawer";
 import PostTitle from "./header/title";
 
 type PostPageHeaderProps = Pick<Post, "title" | "category">;
@@ -25,8 +26,10 @@ const PostPageHeader = ({ category, title }: PostPageHeaderProps) => {
           />
         </div>
         <PostTitle title={title} size="sm" isGradient />
-
-        <div className="flex items-center gap-2">
+        <div className="block lg:hidden">
+          <MobileDrawer />
+        </div>
+        <div className="hidden items-center gap-2 lg:flex">
           <CommandMenu />
           <ThemeToggle />
         </div>

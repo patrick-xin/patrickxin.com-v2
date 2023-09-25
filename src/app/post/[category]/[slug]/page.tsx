@@ -8,18 +8,28 @@ import TocButton from "@/app/post/components/toc/button";
 import PostPageWrapper from "@/app/post/components/wrapper";
 import TocDrawer from "@/app/post/components/toc/drawer";
 import MobileNav from "@/components/nav/mobile-nav";
-import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/utils";
-import PostContent from "../components/mdx/body";
-import PostPageHeader from "../components/header";
-import PostFooter from "../components/footer";
-import AdjacentPost from "../components/adjacent";
+import { siteConfig } from "@/config/site";
+import MessageModal from "@/components/message-modal";
+import PostContent from "../../components/mdx/body";
+import PostPageHeader from "../../components/header";
+import PostFooter from "../../components/footer";
+import AdjacentPost from "../../components/adjacent";
 
 export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+  allPosts.map((post) => ({
+    category: post.category,
+    slug: post.slug,
+  }));
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((p) => p._raw.flattenedPath === params.slug);
+export const generateMetadata = ({
+  params,
+}: {
+  params: { category: string; slug: string };
+}) => {
+  const post = allPosts.find(
+    (p) => p.category === params.category && p.slug === params.slug,
+  );
   if (!post) {
     return {};
   }
@@ -30,7 +40,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
       title: post.title,
       description: post.description,
       type: "article",
-      url: absoluteUrl(post.slug),
+      url: absoluteUrl(`${post.category}/${post.slug}`),
       images: [
         {
           url: post.thumbnail.url,
@@ -50,7 +60,11 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   };
 };
 
-const BlogPage = async ({ params }: { params: { slug: string } }) => {
+const BlogPage = async ({
+  params,
+}: {
+  params: { category: string; slug: string };
+}) => {
   const post = allPosts.find((p) => p._raw.flattenedPath === params.slug);
 
   if (!post) notFound();
@@ -92,7 +106,7 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
             thumbnail={thumbnail}
           />
           <PostContent code={code} />
-          <PostFooter slug={slug} tags={tags} />
+          <PostFooter slug={slug} tags={tags} category={category} />
           <ScrollToTop isFixed top={1000} />
         </div>
         <AdjacentPost slug={slug} />
@@ -101,6 +115,7 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
         <TocButton />
         {toc && <TocDrawer />}
         <MobileNav />
+        <MessageModal />
       </>
     </>
   );

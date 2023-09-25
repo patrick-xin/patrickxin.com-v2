@@ -1,32 +1,35 @@
-import React from "react";
 import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
-import Category from "@/components/category";
-import MovingHeader from "@/components/nav/moving-header";
+import PostCategory from "@/components/category";
+import MovingHeader from "@/components/nav/header";
 import PostItem from "@/app/post/components/item";
 import Footer from "@/components/footer";
-import { BOOKMARKS } from "@/app/bookmark/data";
+import PageWrapper from "@/components/page-wrapper";
 import { absoluteUrl } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
-import PageWrapper from "@/components/page-wrapper";
 import bg from "../../../../public/assets/images/bg-bookmark.jpg";
 
 export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post.category }));
+  allPosts.map((post) => ({ category: post.category }));
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const category = Object.keys(BOOKMARKS).find((b) => b === params.slug);
+export const generateMetadata = ({
+  params,
+}: {
+  params: { category: string };
+}) => {
+  const category = allPosts.find((b) => b.category === params.category)
+    ?.category;
   if (!category) {
     return {};
   }
   return {
-    title: `${category} posts`,
-    description: `${category} posts`,
+    title: `${category}`,
+    description: `articles about ${category} posts`,
     openGraph: {
       title: category,
       description: `${category} posts`,
       type: "article",
-      url: absoluteUrl(`/category/${category}}`),
+      url: absoluteUrl(`/post/${category}}`),
     },
     twitter: {
       card: "summary_large_image",
@@ -38,9 +41,9 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   };
 };
 
-const Page = ({ params }: { params: { slug: string } }) => {
+const Page = ({ params }: { params: { category: string } }) => {
   const posts = allPosts.filter((p) => {
-    return p.category === params.slug;
+    return p.category === params.category;
   });
 
   return (
@@ -50,11 +53,11 @@ const Page = ({ params }: { params: { slug: string } }) => {
         src={bg}
         fill
         priority
-        className="dakr:opacity-5 fixed inset-0 -top-24 -z-10 opacity-20 bg-blend-hue"
+        className="fixed inset-0 -top-24 -z-10 opacity-20 bg-blend-hue dark:opacity-5"
         alt="background-image"
       />
       <div className="mx-auto my-4 max-w-4xl md:my-6 lg:mb-24 lg:mt-12">
-        <Category />
+        <PostCategory />
         <section className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 md:gap-8 lg:gap-12">
           {posts.map((post, index) => (
             <PostItem

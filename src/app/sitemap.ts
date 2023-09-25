@@ -3,7 +3,7 @@ import { BOOKMARKS_AI, BOOKMARKS_WEB } from "./bookmark/data";
 
 export default async function sitemap() {
   const posts = allPosts.map((post) => ({
-    url: `${process.env.SITE_URL}post/${post.slug}`,
+    url: `${process.env.SITE_URL}post/${post.category}/${post.slug}`,
     lastModified: post.publishedAt,
   }));
   const bookmarks = [...BOOKMARKS_WEB, ...BOOKMARKS_AI].map((bookmark) => ({

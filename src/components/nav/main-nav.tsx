@@ -9,10 +9,12 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import UserProfile from "./profile";
 import { CommandMenu } from "../command/command-menu";
+import MobileDrawer from "./mobile-drawer";
 
 const MainNav = ({ fixed = false }) => {
   const { data } = useSession();
   const path = usePathname();
+  const regexPattern = /\/post(.*)/;
 
   return (
     <nav
@@ -46,7 +48,7 @@ const MainNav = ({ fixed = false }) => {
                 href="/post"
                 className={cn(
                   "inline-block decoration-primary transition-all ease-linear hover:text-primary hover:underline hover:underline-offset-4 decoration-4",
-                  path === "/post" &&
+                  path.match(regexPattern) &&
                     "underline underline-offset-4 decoration-4 text-primary",
                 )}
               >
@@ -68,8 +70,15 @@ const MainNav = ({ fixed = false }) => {
           </ul>
           <div className="mt-1 flex items-center lg:gap-6">
             <div className="flex items-center gap-4">
-              <ThemeToggle />
-              <CommandMenu />
+              <div className="hidden lg:block">
+                <ThemeToggle />
+              </div>
+              <div className="hidden lg:block">
+                <CommandMenu />
+              </div>
+              <div className="block lg:hidden">
+                <MobileDrawer />
+              </div>
             </div>
 
             {data ? <UserProfile session={data} /> : null}

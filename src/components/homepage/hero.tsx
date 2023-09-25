@@ -55,7 +55,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <p className="mx-auto mt-6 max-w-3xl text-muted-foreground lg:mt-12">
+      <p className="mx-8 mt-24 max-w-3xl text-muted-foreground lg:mx-auto lg:mt-12">
         I am a passionate Software Engineer, specialised in front-end
         development using React and TypeScript. I love creating beautiful
         websites and interesting web apps.
