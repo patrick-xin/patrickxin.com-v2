@@ -62,12 +62,12 @@ module.exports = withPlugins([withContentlayer, withBundleAnalyzer], {
   },
   poweredByHeader: false,
   basePath: "",
-  transpilePackages: ["@plaiceholder/ui"],
   images: {
-    domains: [
-      "images.unsplash.com",
-      "www.patrickxin.com",
-      "avatars.githubusercontent.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
   },
   headers() {
