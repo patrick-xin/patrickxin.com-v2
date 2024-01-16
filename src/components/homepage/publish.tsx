@@ -1,7 +1,7 @@
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
-import PostTitle from "@/app/post/components/header/title";
+import PostTitle from "@/components/post/header/title";
 import GradiantLink from "../gradiant-link";
 
 const PublishSection = ({
@@ -25,7 +25,6 @@ const PublishSection = ({
               className="text-left font-semibold text-primary/70 transition-all ease-linear group-hover:underline group-hover:underline-offset-2"
               title={post.title}
               size="sm"
-              isGradient={false}
             />
             <ArrowTopRightIcon className="h-4 w-4 group-hover:text-primary" />
           </Link>

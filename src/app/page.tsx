@@ -5,9 +5,10 @@ import MainNav from "@/components/nav/main-nav";
 import { prisma } from "@/lib/db";
 import Footer from "@/components/footer";
 import GradiantLink from "@/components/gradiant-link";
+import PostTitle from "@/components/post/header/title";
 import Hero from "../components/homepage/hero";
 import Section from "../components/homepage/section";
-import PostTitle from "./post/components/header/title";
+
 import bg from "../../public/assets/images/dark-bg.avif";
 
 const getPosts = async () => {
@@ -64,7 +65,6 @@ export default async function Home() {
                     className="text-left font-semibold text-indigo-400 transition-all ease-linear group-hover:underline group-hover:underline-offset-2"
                     title={post.title}
                     size="sm"
-                    isGradient={false}
                   />
                   <ArrowTopRightIcon className="h-4 w-4 group-hover:text-primary" />
                 </Link>

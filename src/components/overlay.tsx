@@ -1,5 +1,3 @@
-import React from "react";
-
 const NoiseOverlay = () => {
   return (
     <svg className="pointer-events-none fixed inset-0 isolate z-50 h-full w-full opacity-80 mix-blend-soft-light">

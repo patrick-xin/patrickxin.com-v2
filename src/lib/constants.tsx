@@ -45,13 +45,13 @@ export const CATEGORIES = [
   },
   {
     title: "WEB",
-    href: "/post/web",
+    href: "/category/web",
     icon: <RocketIcon />,
     path: "web",
   },
   {
     title: "AI",
-    href: "/post/ai",
+    href: "/category/ai",
     icon: <KeyboardIcon />,
     path: "ai",
   },

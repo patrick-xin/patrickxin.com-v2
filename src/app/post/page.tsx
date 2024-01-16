@@ -2,12 +2,12 @@ import React from "react";
 
 import type { Metadata } from "next";
 import Image from "next/image";
-import PostList from "@/app/post/components/list";
 import Category from "@/components/category";
-import MovingHeader from "@/components/nav/header";
 import Footer from "@/components/footer";
 import { siteConfig } from "@/config/site";
 import PageWrapper from "@/components/page-wrapper";
+import PostList from "@/components/post/list";
+import MainNav from "@/components/nav/main-nav";
 import bg from "../../../public/assets/images/bg-post.jpg";
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 const AllBlogsPage = () => {
   return (
     <PageWrapper>
-      <MovingHeader count={320} />
+      <MainNav fixed />
       <Image
         src={bg}
         fill
