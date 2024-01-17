@@ -50,7 +50,7 @@ const TableOfContent = () => {
           href={`#${heading.id}`}
           key={heading.id}
           className={cn(
-            "relative hover:text-pink-400 text-zinc-600 dark:text-zinc-300 transition-all ease-linear",
+            "relative hover:text-primary transition-all ease-linear",
             {
               "text-primary hover:text-primary scale-105 before:contents-[''] before:absolute before:inset-0 before:-left-2 before:border-l-2 before:border-border/50":
                 headingId === heading.id && isInView,

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import Image from "next/image";
 import Link from "next/link";
-
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { HashIcon, QuoteEndIcon, QuoteStartIcon } from "@/components/icon";
 import Pre from "./pre";
 import ToastForPost from "./post-toast";
@@ -9,15 +9,29 @@ import ToastForPost from "./post-toast";
 const MDXComponents = {
   ToastForPost,
   MDXImage: ({ ...props }) => (
-    <Image
-      {...props}
-      src={props.src}
-      alt={props.alt}
-      className="aspect-[4/3] rounded-md object-fill"
-      width={800}
-      height={600}
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
-    />
+    <Dialog>
+      <DialogTrigger asChild>
+        <Image
+          {...props}
+          src={props.src}
+          alt={props.alt}
+          className="aspect-[4/3] cursor-zoom-in rounded-md object-fill"
+          width={800}
+          height={600}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
+        />
+      </DialogTrigger>
+      <DialogContent className="h-[80vh] border-none">
+        <Image
+          {...props}
+          src={props.src}
+          alt={props.alt}
+          className="h-full w-full rounded-md p-2"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 90vw"
+        />
+      </DialogContent>
+    </Dialog>
   ),
   a: ({ ...props }) => {
     if (props.href.startsWith("https")) {

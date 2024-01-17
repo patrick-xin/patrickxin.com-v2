@@ -40,7 +40,6 @@ const PostHeader = ({
           isActive
           center
         />
-
         <PostTitle title={title} />
       </div>
 

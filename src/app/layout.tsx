@@ -12,7 +12,6 @@ import ThemeProvider from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/config/site";
-import NoiseOverlay from "@/components/overlay";
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
@@ -90,7 +89,6 @@ export default function RootLayout(props: {
         )}
       >
         <ThemeProvider>
-          <NoiseOverlay />
           <main className="flex min-h-screen flex-col">
             <div className="mx-4 mt-20 grow md:mx-6 lg:mx-0">
               {props.children}

@@ -51,10 +51,10 @@ export default async function Home() {
               I'm learning."
         >
           <div className="mx-auto max-w-2xl lg:mt-14">
-            <div className="my-4 w-full text-sm font-medium dark:text-zinc-100 lg:text-lg">
+            <div className="my-4 w-full text-sm font-medium text-muted-foreground">
               Latest Posts
             </div>
-            <div className="flex flex-col justify-center space-y-2 lg:space-y-6">
+            <div className="flex flex-col justify-center space-y-4 lg:space-y-6">
               {posts.map((post) => (
                 <Link
                   href={`/post/${post.slug}`}
@@ -62,7 +62,7 @@ export default async function Home() {
                   className="group inline-flex items-center justify-between decoration-primary/10 underline-offset-4 hover:underline"
                 >
                   <PostTitle
-                    className="text-left font-semibold text-indigo-400 transition-all ease-linear group-hover:underline group-hover:underline-offset-2"
+                    className="text-left font-semibold transition-all ease-linear group-hover:underline group-hover:underline-offset-2"
                     title={post.title}
                     size="sm"
                   />

@@ -2,7 +2,6 @@
 
 import { HeartIcon, HeartFilledIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { likePost } from "@/lib/actions";
 import { useLocalStorage } from "@/lib/hooks";
 
@@ -12,14 +11,13 @@ const PostLikeStats = ({ slug, likes }: { slug: string; likes: number }) => {
     <div className="flex items-center gap-1">
       <Button
         disabled={isLiked}
-        variant="secondary"
+        variant="ghost"
         onClick={() => {
           if (isLiked) return;
 
           setLike(true);
           likePost({ slug });
         }}
-        className={cn("relative", { "cursor-not-allowed": false })}
         size="icon"
       >
         {isLiked ? (
