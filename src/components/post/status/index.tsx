@@ -8,12 +8,13 @@ type PostStatsProps = {
 };
 
 const PostStats = async ({ slug }: PostStatsProps) => {
-  const post = await prisma.post.findFirstOrThrow({
+  const post = await prisma.post.findUnique({
     where: { slug },
     include: {
       comments: true,
     },
   });
+  if (!post) return null;
   return (
     <div className="col-span-3 flex items-center justify-end gap-4 text-sm">
       <div className="hidden lg:block">

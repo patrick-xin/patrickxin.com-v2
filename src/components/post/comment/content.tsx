@@ -12,6 +12,7 @@ const CommentContents = async ({ slug }: { slug: string }) => {
       reply: true,
     },
   });
+
   return (
     <div className="space-y-6 md:space-y-8">
       {comments.map((comment) => (

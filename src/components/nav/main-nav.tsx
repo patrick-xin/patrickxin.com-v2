@@ -81,7 +81,11 @@ const MainNav = ({ fixed = false }) => {
               </div>
             </div>
 
-            {data ? <UserProfile session={data} /> : null}
+            {data ? (
+              <div className="-mt-1 ml-2">
+                <UserProfile session={data} />{" "}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

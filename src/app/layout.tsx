@@ -8,6 +8,7 @@ import {
   Architects_Daughter,
 } from "next/font/google";
 
+import Image from "next/image";
 import ThemeProvider from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
@@ -94,7 +95,50 @@ export default function RootLayout(props: {
               {props.children}
             </div>
           </main>
+          <div className="fixed inset-0 -z-50">
+            <svg>
+              <filter id="noiseFilter">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.6"
+                  stitchTiles="stitch"
+                />
+              </filter>
+            </svg>
 
+            <svg>
+              <filter id="noiseFilter2">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.6"
+                  stitchTiles="stitch"
+                />
+              </filter>
+              <clipPath id="rounded-clip">
+                <rect x="0" y="0" width="300" height="300" rx="20" ry="20" />
+              </clipPath>
+            </svg>
+
+            <svg>
+              <filter id="noiseFilter3">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.6"
+                  stitchTiles="stitch"
+                />
+              </filter>
+              <clipPath id="rounded-clip2">
+                <rect x="0" y="0" width="230" height="70" rx="20" ry="20" />
+              </clipPath>
+            </svg>
+          </div>
+          <Image
+            alt="bg-image"
+            src="/bg.svg"
+            className="fixed inset-0 -z-50"
+            height={1000}
+            width={1000}
+          />
           <Toaster />
           {props.modal}
         </ThemeProvider>
